@@ -1,10 +1,12 @@
 /*
- * main.cpp
+ * 	CP411
+ * 	HongBing Fan
  *
  *  Created on: Nov 23, 2017
- *      Author: Nicholas
+ *      Author: 	Omid Ghiyasian
+ *      			Nicholas Hallman
  */
 
+int main(int argv, char* argc[]) {
 
-
-
+}
