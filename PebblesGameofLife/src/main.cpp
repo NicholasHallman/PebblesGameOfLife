@@ -14,7 +14,7 @@ int heightG = 768;
 int pState = 1;
 int CSIZE = 20;
 
-Button buttons[10];
+Button buttons[20];
 bool introVisit = false;
 cellMap map;
 

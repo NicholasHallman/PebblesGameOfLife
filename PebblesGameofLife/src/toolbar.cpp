@@ -80,6 +80,13 @@ void toolbar(){
 		scolor.active = false;
 		scolor.broken = true;
 		buttons[9] = scolor;
+
+		Button sre;
+		sre.Name(( const unsigned char*)"Clear");
+		sre.SetPosition(Vertex(scolor.position.x + scolor.rWidth + 20,bh,0));
+		sre.onClick(breset);
+		sre.active = true;
+		buttons[10] = sre;
 	}
 	for(int i = 0; i < 20; i++){
 		if(buttons[i].active){
@@ -145,6 +152,15 @@ void bcolor(){
 	glutInitWindowPosition(100,100);
 	glutInitWindowSize(500,500);
 	int colorW = glutCreateWindow("ColorPicker");
+}
+
+void breset(){
+	for(int y = 0; y < 200; y++){
+		for(int x = 0; x < 200; x++){
+			map.cells[x][y].oldState = 0;
+			map.cells[x][y].newState = 0;
+		}
+	}
 }
 
 
