@@ -28,7 +28,7 @@ void Button::Draw(){
 		glColor3f(1,1,1);
 	} else{
 		// otherwise make it gray
-		glColor3f(.5,.5,.5);
+		glColor3f(.5,.55,.6);
 	}
 	//draws a rectangle that is 26 pixels tall and the
 	//length of the name wide plus a 5 pixel buffer

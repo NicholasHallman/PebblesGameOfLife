@@ -13,9 +13,12 @@
 #include"main.hpp"
 
 void intro(void);
+void toolbar();
 
 void but1(void);
 void but2(void);
 void but3(void);
+void but4(void);
+void but5(void);
 
 #endif /* INTROSCREEN_HPP_ */

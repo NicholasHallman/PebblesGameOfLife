@@ -15,6 +15,7 @@ int pState = 1;
 
 Button buttons[10];
 bool introVisit = false;
+cellMap map;
 
 void init2D(void) {
 	glLoadIdentity();
@@ -37,6 +38,8 @@ void renderer(){
 
 		break;
 	case 2:
+		toolbar();
+		drawGrid();
 		//user draws on cell map to add cells;
 		break;
 	case 3:

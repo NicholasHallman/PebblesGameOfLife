@@ -14,11 +14,13 @@
 #include"introscreen.hpp"
 #include"Button.h"
 #include"events.hpp"
+#include"draw.hpp"
 
 using namespace peb;
 
 extern Button buttons[];
 extern bool introVisit;
+extern int pState;
 
 typedef struct cell{
 	int newState;
@@ -28,8 +30,12 @@ typedef struct cell{
 
 typedef struct cellMap{
 	int size;
-	cell map[];
+	cell map[200][200];
+	// if you can figure out how to make
+	// this dynamic plz do
 }cellMap;
+
+extern cellMap map;
 
 
 #endif /* MAIN_HPP_ */
