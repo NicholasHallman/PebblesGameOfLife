@@ -7,6 +7,14 @@
  *      			Nicholas Hallman
  */
 
+void init2D(void) {
+
+}
+
+void init3D() {
+
+}
+
 int main(int argv, char* argc[]) {
 
 }
