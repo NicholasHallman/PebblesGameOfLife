@@ -8,7 +8,9 @@
 #ifndef MAIN_HPP_
 #define MAIN_HPP_
 
-
+#include<GL/glut.h>
+#include<stdlib.h>
+#include<stdio.h>
 
 
 
