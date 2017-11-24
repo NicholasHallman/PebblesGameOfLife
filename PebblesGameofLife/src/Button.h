@@ -26,11 +26,13 @@ private:
 	const unsigned char * name;
 public:
 	bool active;
+	bool broken;
 	bool hover;
 	int rWidth;
 	Vertex position;
 	Button();
 	void Draw();
+	void DrawBroken();
 	void Name(const unsigned char * name);
 	void SetPosition(Vertex newPos);
 	void onClick(void (*f)(void));

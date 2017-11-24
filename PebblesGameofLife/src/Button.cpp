@@ -44,6 +44,28 @@ void Button::Draw(){
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, name);
 }
 
+void Button::DrawBroken(){
+	// if the mouse is over the button make it white
+	if(hover){
+		glColor3f(.6,0,0);
+	} else{
+		// otherwise make it gray
+		glColor3f(.6,.3,.3);
+	}
+	//draws a rectangle that is 26 pixels tall and the
+	//length of the name wide plus a 5 pixel buffer
+	glBegin(GL_QUADS);
+		glVertex2f(position.x,position.y);
+		glVertex2f(position.x + rWidth,position.y);
+		glVertex2f(position.x + rWidth,position.y + height);
+		glVertex2f(position.x ,position.y + height);
+	glEnd();
+	//sets the color to black to draw the text
+	glColor3f(0,0,0);
+	glRasterPos2i(position.x + 5, position.y + 7);
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, name);
+}
+
 void Button::Name(const unsigned char* name){
 	//sets the buttons text
 	rWidth = 0;

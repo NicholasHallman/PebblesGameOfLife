@@ -70,18 +70,22 @@ void toolbar(){
 		sfull.SetPosition(Vertex(sminus.position.x + sminus.rWidth + 30,bh,0));
 		sfull.onClick(bfull);
 		sfull.active = false;
+		sfull.broken = true;
 		buttons[8] = sfull;
 
 		Button scolor;
 		scolor.Name(( const unsigned char*)"Color");
-		scolor.SetPosition(Vertex(sminus.position.x + sminus.rWidth + 30,bh,0));
+		scolor.SetPosition(Vertex(sfull.position.x + sfull.rWidth + 10,bh,0));
 		scolor.onClick(bcolor);
-		scolor.active = true;
+		scolor.active = false;
+		scolor.broken = true;
 		buttons[9] = scolor;
 	}
 	for(int i = 0; i < 20; i++){
 		if(buttons[i].active){
 			buttons[i].Draw();
+		} else if(buttons[i].broken) {
+			buttons[i].DrawBroken();
 		}
 	}
 	introVisit = true;
