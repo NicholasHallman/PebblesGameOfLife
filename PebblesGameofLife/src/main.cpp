@@ -32,7 +32,7 @@ void renderer(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	switch(pState){
 	case 1:
-
+		// Opens program on the intro screen
 		intro();
 
 		break;
@@ -53,13 +53,6 @@ void renderer(){
 	glutSwapBuffers();
 }
 
-void reshape(int width, int height){
-	widthG = width;
-	heightG = height;
-	init2D();
-
-}
-
 int main(int argv, char* argc[]) {
 
 	glutInit(&argv, argc);
@@ -68,12 +61,13 @@ int main(int argv, char* argc[]) {
 	glutInitWindowPosition(100,100);
 	glutInitWindowSize(1366,768);
 	glutCreateWindow("Pebble's game of life");
+
+	init2D();
 	/*
 	glutGameModeString("1366x768");
 	glutEnterGameMode();
 	*/
 
-	glutReshapeFunc(reshape);
 	glutPassiveMotionFunc(mouseOver);
 	glutMouseFunc(mouseClicked);
 	glutDisplayFunc(renderer);

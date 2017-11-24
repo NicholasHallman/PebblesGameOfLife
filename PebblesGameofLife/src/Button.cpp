@@ -23,7 +23,7 @@ Button::~Button() {
 void Button::Draw(){
 	glColor3f(1,1,1);
 	int nWidth = 0;
-	for(int i = 0; i < strlen((char *)name); i++){
+	for(int i = 0; i < strlen((char *)name); i++){ //This gives a warning but it works
 		nWidth += glutBitmapWidth(GLUT_BITMAP_HELVETICA_18, name[i]);
 	}
 	nWidth += 10;
