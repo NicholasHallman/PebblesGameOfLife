@@ -46,6 +46,7 @@ void Button::Draw(){
 
 void Button::Name(const unsigned char* name){
 	//sets the buttons text
+	rWidth = 0;
 	this->name = name;
 	//goes through every character and adds the length of the character to a
 	//variable used to determine the width of the button

@@ -20,11 +20,6 @@ void intro(){
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, g);
 }
 
-
-
-// function executed when b1 is pressed
-
-
 void startSim(){
 	canSim = true;
 	pState = 3;

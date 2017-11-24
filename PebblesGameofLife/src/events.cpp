@@ -49,6 +49,11 @@ void mouseClicked(int button, int state, int x, int y){
 			}
 		}
 	}
+
+	if((pState == 2 || pState == 3) && button == 2 && state == 1){
+		map.x = 0;
+		map.y = 0;
+	}
 }
 
 void keyPress(unsigned char key, int x, int y){
@@ -88,7 +93,7 @@ void keyRelease(unsigned char key, int x, int y){
 
 int buttonOver(int x, int y){
 	for(int i = 0; i < 20; i++){
-		if(buttons[i].position.x != -1){
+		if(buttons[i].active){
 			int posX = buttons[i].position.x;
 			int posY = buttons[i].position.y;
 			int wide = buttons[i].rWidth;

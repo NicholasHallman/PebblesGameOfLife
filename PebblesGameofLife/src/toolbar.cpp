@@ -112,9 +112,15 @@ void but5(){
 
 void bplus(){
 	CSIZE += 5;
+	if(CSIZE > 50){
+		CSIZE = 50;
+	}
 }
 void bminus(){
 	CSIZE -= 5;
+	if(CSIZE < 5){
+		CSIZE = 5;
+	}
 }
 
 void bfull(){
