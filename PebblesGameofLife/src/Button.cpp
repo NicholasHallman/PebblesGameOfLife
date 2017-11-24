@@ -10,6 +10,8 @@
 namespace peb {
 
 Button::Button() {
+	rWidth = 0;
+	hover = false;
 	clickFunc = NULL;
 	name = (unsigned char*)"";
 	position.setVertex(-1,-1,-1);
@@ -21,25 +23,37 @@ Button::~Button() {
 }
 
 void Button::Draw(){
-	glColor3f(1,1,1);
-	int nWidth = 0;
-	for(int i = 0; i < strlen((char *)name); i++){ //This gives a warning but it works
-		nWidth += glutBitmapWidth(GLUT_BITMAP_HELVETICA_18, name[i]);
+	// if the mouse is over the button make it white
+	if(hover){
+		glColor3f(1,1,1);
+	} else{
+		// otherwise make it gray
+		glColor3f(.5,.5,.5);
 	}
-	nWidth += 10;
+	//draws a rectangle that is 26 pixels tall and the
+	//length of the name wide plus a 5 pixel buffer
 	glBegin(GL_QUADS);
 		glVertex2f(position.x,position.y);
-		glVertex2f(position.x + nWidth,position.y);
-		glVertex2f(position.x + nWidth,position.y + height);
+		glVertex2f(position.x + rWidth,position.y);
+		glVertex2f(position.x + rWidth,position.y + height);
 		glVertex2f(position.x ,position.y + height);
 	glEnd();
+	//sets the color to black to draw the text
 	glColor3f(0,0,0);
 	glRasterPos2i(position.x + 5, position.y + 7);
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, name);
 }
 
 void Button::Name(const unsigned char* name){
+	//sets the buttons text
 	this->name = name;
+	//goes through every character and adds the length of the character to a
+	//variable used to determine the width of the button
+	for(int i = 0; i < strlen((char *)name); i++){ //This gives a warning but it works
+		rWidth += glutBitmapWidth(GLUT_BITMAP_HELVETICA_18, name[i]);
+	}
+	// adds a buffer
+	rWidth += 10;
 }
 
 void Button::SetPosition(Vertex newPos){

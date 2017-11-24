@@ -20,19 +20,19 @@ void intro(){
 	if(!introVisit){
 		Button s20; // create a new button
 		s20.Name(( const unsigned char*)"20x20"); //name the button (acts as button text)
-		s20.SetPosition(Vertex(10,30,0)); //set the buttons position
+		s20.SetPosition(Vertex(100,700,0)); //set the buttons position
 		s20.onClick(but1); // set the function to activate when the button is pressed
 		buttons[0] = s20; // add the button to the button draw array
 
 		Button s50;
 		s50.Name(( const unsigned char*)"50x50");
-		s50.SetPosition(Vertex(140,30,0));
+		s50.SetPosition(Vertex(s20.position.x + s20.rWidth + 10,700,0));
 		s50.onClick(but2);
 		buttons[1] = s50;
 
 		Button s100;
 		s100.Name(( const unsigned char*)"100x100");
-		s100.SetPosition(Vertex(270,30,0));
+		s100.SetPosition(Vertex(s50.position.x + s50.rWidth + 10,700,0));
 		s100.onClick(but3);
 		buttons[2] = s100;
 	}

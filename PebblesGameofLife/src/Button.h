@@ -25,6 +25,8 @@ private:
 	void (*clickFunc)(void);
 	const unsigned char * name;
 public:
+	bool hover;
+	int rWidth;
 	Vertex position;
 	Button();
 	void Draw();
