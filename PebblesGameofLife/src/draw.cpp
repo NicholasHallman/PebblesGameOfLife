@@ -59,13 +59,29 @@ void drawCells(){
 }
 
 void drawColorWheel(){
+	glColor3f(.2,.25,.3);
+	glBegin(GL_QUADS);
+		glVertex2d(218,654);
+		glVertex2d(488,114);
+		glVertex2d(1138,114);
+		glVertex2d(858,654);
+	glEnd();
 	glBegin(GL_TRIANGLES);
+	glColor3f(1,1,1);
+		glVertex2d(818,634);
+		glColor3f(.5,.5,.5);
+		glVertex2d(568,134);
+		glColor3f(0,0,0);
+		glVertex2d(1078,134);
+
 		glColor3f(1,0,0);
-		glVertex2d(683,134);
+		glVertex2d(518,134);
 		glColor3f(0,1,0);
-		glVertex2d(433,634);
+		glVertex2d(268,634);
 		glColor3f(0,0,1);
-		glVertex2d(933,634);
+		glVertex2d(768,634);
+
+
 	glEnd();
 }
 
