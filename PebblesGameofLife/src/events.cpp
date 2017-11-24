@@ -32,10 +32,11 @@ void mouseClicked(int button, int state, int x, int y){
 	y = 768 - y;
 	if(button == 0 && state == 1){
 		for(int i = 0; i < 20; i++){
+			int wide = buttons[i].rWidth;
 			if(buttons[i].position.x != -1){
 				int posX = buttons[i].position.x;
 				int posY = buttons[i].position.y;
-				if(x > posX && x < posX + 120 && y > posY && y < posY + 26){
+				if(x > posX && x < posX + wide && y > posY && y < posY + 26){
 					buttons[i].clicked();
 				}
 			}

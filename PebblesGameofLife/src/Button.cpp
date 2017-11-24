@@ -52,7 +52,6 @@ void Button::Name(const unsigned char* name){
 	for(int i = 0; i < strlen((char *)name); i++){ //This gives a warning but it works
 		rWidth += glutBitmapWidth(GLUT_BITMAP_HELVETICA_18, name[i]);
 	}
-	// adds a buffer
 	rWidth += 10;
 }
 
