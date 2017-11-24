@@ -17,12 +17,12 @@ typedef struct cell{
 	int newState;
 	int oldState;
 	int age;
-};
+}cell;
 
 typedef struct cellMap{
 	int size;
 	cell map[];
-};
+}cellMap;
 
 
 #endif /* MAIN_HPP_ */
