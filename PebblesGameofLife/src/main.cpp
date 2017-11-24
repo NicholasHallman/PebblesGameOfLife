@@ -52,6 +52,9 @@ void renderer(){
 		drawCells();
 		drawGrid();
 		toolbar();
+		if(colorW){
+			drawColorWheel();
+		}
 		break;
 		//User watches simulation;
 	case 4:
