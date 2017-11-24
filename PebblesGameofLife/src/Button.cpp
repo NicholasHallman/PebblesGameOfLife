@@ -10,8 +10,9 @@
 namespace peb {
 
 Button::Button() {
+	clickFunc = NULL;
 	name = (unsigned char*)"";
-	position.setVertex(0,0,0);
+	position.setVertex(-1,-1,-1);
 	// TODO Auto-generated constructor stub
 }
 
@@ -38,5 +39,16 @@ void Button::Name(const unsigned char* name){
 
 void Button::SetPosition(Vertex newPos){
 	position = newPos;
+}
+
+void Button::onClick(void (*f)(void)){
+	printf(" f %p \n" ,f);
+	this->clickFunc = f;
+}
+
+void Button::clicked(){
+	if(clickFunc != NULL){
+		clickFunc();
+	}
 }
 } /* namespace hall7790 */

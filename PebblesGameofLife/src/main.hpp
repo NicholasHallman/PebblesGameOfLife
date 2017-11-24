@@ -13,10 +13,12 @@
 #include<stdio.h>
 #include"introscreen.hpp"
 #include"Button.h"
+#include"events.hpp"
 
 using namespace peb;
 
 extern Button buttons[];
+extern bool introVisit;
 
 typedef struct cell{
 	int newState;

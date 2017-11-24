@@ -14,4 +14,7 @@
 
 void intro(void);
 
+void but1(void);
+void but2(void);
+
 #endif /* INTROSCREEN_HPP_ */

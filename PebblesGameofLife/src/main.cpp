@@ -14,6 +14,7 @@ int heightG = 768;
 int pState = 1;
 
 Button buttons[10];
+bool introVisit = false;
 
 void init2D(void) {
 	glLoadIdentity();
@@ -31,7 +32,9 @@ void renderer(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	switch(pState){
 	case 1:
+
 		intro();
+
 		break;
 	case 2:
 		//user draws on cell map to add cells;
@@ -48,7 +51,6 @@ void renderer(){
 	}
 
 	glutSwapBuffers();
-	glutPostRedisplay();
 }
 
 void reshape(int width, int height){
@@ -66,12 +68,14 @@ int main(int argv, char* argc[]) {
 	glutInitWindowPosition(100,100);
 	glutInitWindowSize(1366,768);
 	glutCreateWindow("Pebble's game of life");
-
+	/*
 	glutGameModeString("1366x768");
 	glutEnterGameMode();
-
+	*/
 
 	glutReshapeFunc(reshape);
+	glutPassiveMotionFunc(mouseOver);
+	glutMouseFunc(mouseClicked);
 	glutDisplayFunc(renderer);
 	glutMainLoop();
 

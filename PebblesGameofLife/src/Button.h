@@ -10,22 +10,27 @@
 
 #include<GL/freeglut.h>
 #include<GL/glut.h>
+#include<stdio.h>
+#include<stdlib.h>
 #include"Vertex.hpp"
 
 const int height = 26;
-const int width = 50;
+const int width = 120;
 
 namespace peb {
 
 class Button {
 private:
+	void (*clickFunc)(void);
 	const unsigned char * name;
-	Vertex position;
 public:
+	Vertex position;
 	Button();
 	void Draw();
 	void Name(const unsigned char * name);
 	void SetPosition(Vertex newPos);
+	void onClick(void (*f)(void));
+	void clicked();
 	virtual ~Button();
 };
 
