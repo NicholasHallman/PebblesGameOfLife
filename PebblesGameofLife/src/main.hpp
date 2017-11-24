@@ -15,6 +15,7 @@
 #include"Button.h"
 #include"events.hpp"
 #include"draw.hpp"
+#include"simulate.hpp"
 
 using namespace peb;
 

@@ -38,7 +38,7 @@ void mouseClicked(int button, int state, int x, int y){
 
 	if(pState == 2 && button == 0 && state == 1 && y < 730){
 		int relX = floor(x - ( floor(1366 - (12 * map.size))/2) - map.x) / 12;
-		int relY = floor(y - ( floor(768  - (12 * map.size))/2) - map.y) / 12;
+		int relY = floor(y - ( floor((768  - (12 * map.size))/2) - 18) - map.y) / 12;
 		if(relX >= 0 && relX < 200 && relY >= 0 && relY < 200){
 			if(map.cells[relX][relY].newState == 1){
 				map.cells[relX][relY].newState = 0;
@@ -50,7 +50,7 @@ void mouseClicked(int button, int state, int x, int y){
 }
 
 void keyPress(unsigned char key, int x, int y){
-	if(pState == 2){
+	if(pState == 2 || pState == 3){
 		switch(key){
 		case 'w':
 			speedY = -4;
@@ -70,7 +70,7 @@ void keyPress(unsigned char key, int x, int y){
 }
 
 void keyRelease(unsigned char key, int x, int y){
-	if(pState == 2){
+	if(pState == 2 || pState == 3){
 		switch(key){
 		case 's':
 		case 'w':
@@ -98,13 +98,13 @@ int buttonOver(int x, int y){
 	return -1;
 }
 
-void mapChangePos(int x){
+void timer(int x){
 	map.x += speedX;
 	map.y += speedY;
-
+	simulate2D();
 	if (x)
 	glutPostRedisplay();
-	glutTimerFunc(16, mapChangePos, x);
+	glutTimerFunc(16, timer, x);
 }
 
 

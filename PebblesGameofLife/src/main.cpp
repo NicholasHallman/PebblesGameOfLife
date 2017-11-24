@@ -35,24 +35,28 @@ void renderer(){
 	case 1:
 		// Opens program on the intro screen
 		intro();
-
 		break;
 	case 2:
+		//user draws on cell map to add cells;
 		drawCells();
 		drawGrid();
-
 		toolbar();
-		//user draws on cell map to add cells;
 		break;
 	case 3:
+		drawCells();
+		drawGrid();
+		toolbar();
+		break;
 		//User watches simulation;
 	case 4:
 		//User inputs seed for generation, selects shape;
+		break;
 	case 5:
 		//Doughnut Simulation;
+		break;
 	case 6:
 		//Volumetric Cube Simulation;
-	break;
+		break;
 	}
 
 	glutSwapBuffers();
@@ -75,7 +79,7 @@ int main(int argv, char* argc[]) {
 
 	init2D();
 	initButton();
-	mapChangePos(1);
+	timer(1);
 	/*
 	glutGameModeString("1366x768");
 	glutEnterGameMode();

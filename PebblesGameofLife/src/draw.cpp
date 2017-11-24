@@ -40,7 +40,7 @@ void drawCells(){
 	int startx = (1366 - width) / 2;
 	int starty = (768 - height) / 2;
 
-	starty -= 6;
+	starty -= 18;
 
 	for(int y = 0; y < map.size; y++){
 		for(int x = 0; x < map.size; x++){
@@ -53,6 +53,7 @@ void drawCells(){
 					glVertex2d(map.x + startx + (x * 12)      , map.y + starty + (y * 12));
 				glEnd();
 			}
+			map.cells[x][y].oldState = map.cells[x][y].newState;
 		}
 	}
 }

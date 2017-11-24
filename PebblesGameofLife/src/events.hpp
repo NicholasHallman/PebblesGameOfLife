@@ -23,7 +23,7 @@ void keyRelease(unsigned char key, int x, int y);
 
 int buttonOver(int x, int y);
 
-void mapChangePos(int x);
+void timer(int x);
 
 void resetHover();
 
