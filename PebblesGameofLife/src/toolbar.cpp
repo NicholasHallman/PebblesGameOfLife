@@ -53,7 +53,7 @@ void toolbar(){
 
 		Button splus;
 		splus.Name(( const unsigned char*)"+");
-		splus.SetPosition(Vertex(s200.position.x + s200.rWidth + 50,bh,0));
+		splus.SetPosition(Vertex(s200.position.x + s200.rWidth + 30,bh,0));
 		splus.onClick(bplus);
 		splus.active = true;
 		buttons[6] = splus;
@@ -67,10 +67,17 @@ void toolbar(){
 
 		Button sfull;
 		sfull.Name(( const unsigned char*)"Full Screen");
-		sfull.SetPosition(Vertex(sminus.position.x + sminus.rWidth + 50,bh,0));
+		sfull.SetPosition(Vertex(sminus.position.x + sminus.rWidth + 30,bh,0));
 		sfull.onClick(bfull);
 		sfull.active = false;
 		buttons[8] = sfull;
+
+		Button scolor;
+		scolor.Name(( const unsigned char*)"Color");
+		scolor.SetPosition(Vertex(sminus.position.x + sminus.rWidth + 30,bh,0));
+		scolor.onClick(bcolor);
+		scolor.active = true;
+		buttons[9] = scolor;
 	}
 	for(int i = 0; i < 20; i++){
 		if(buttons[i].active){
@@ -128,6 +135,12 @@ void bfull(){
 	glutEnterGameMode();
 	init2D();
 	glutPostRedisplay();
+}
+
+void bcolor(){
+	glutInitWindowPosition(100,100);
+	glutInitWindowSize(500,500);
+	int colorW = glutCreateWindow("ColorPicker");
 }
 
 
