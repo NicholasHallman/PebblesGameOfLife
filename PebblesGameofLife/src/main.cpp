@@ -11,6 +11,7 @@
 
 int widthG = 1280;
 int heightG = 720;
+int pState = 1;
 
 void init2D(void) {
 	glLoadIdentity();
@@ -18,7 +19,6 @@ void init2D(void) {
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0.0, widthG,0.0, heightG);
-
 }
 
 void init3D() {
@@ -27,10 +27,23 @@ void init3D() {
 
 void renderer(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glColor3f(1.0,0,0);
-	glBegin(GL_POLYGON);
-
-	glEnd();
+	switch(pState){
+	case 1:
+		intro();
+		break;
+	case 2:
+		//user draws on cell map to add cells;
+		break;
+	case 3:
+		//User watches simulation;
+	case 4:
+		//User inputs seed for generation, selects shape;
+	case 5:
+		//Doughnut Simulation;
+	case 6:
+		//Volumetric Cube Simulation;
+	break;
+	}
 
 	glutSwapBuffers();
 	glutPostRedisplay();

@@ -11,7 +11,18 @@
 #include<GL/glut.h>
 #include<stdlib.h>
 #include<stdio.h>
+#include"introscreen.hpp"
 
+typedef struct cell{
+	int newState;
+	int oldState;
+	int age;
+};
+
+typedef struct cellMap{
+	int size;
+	cell map[];
+};
 
 
 #endif /* MAIN_HPP_ */
