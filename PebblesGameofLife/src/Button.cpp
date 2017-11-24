@@ -22,14 +22,19 @@ Button::~Button() {
 
 void Button::Draw(){
 	glColor3f(1,1,1);
+	int nWidth = 0;
+	for(int i = 0; i < strlen((char *)name); i++){
+		nWidth += glutBitmapWidth(GLUT_BITMAP_HELVETICA_18, name[i]);
+	}
+	nWidth += 10;
 	glBegin(GL_QUADS);
 		glVertex2f(position.x,position.y);
-		glVertex2f(position.x + width,position.y);
-		glVertex2f(position.x + width,position.y + height);
+		glVertex2f(position.x + nWidth,position.y);
+		glVertex2f(position.x + nWidth,position.y + height);
 		glVertex2f(position.x ,position.y + height);
 	glEnd();
 	glColor3f(0,0,0);
-	glRasterPos2i(position.x + 2, position.y + 2);
+	glRasterPos2i(position.x + 5, position.y + 7);
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, name);
 }
 
@@ -42,7 +47,6 @@ void Button::SetPosition(Vertex newPos){
 }
 
 void Button::onClick(void (*f)(void)){
-	printf(" f %p \n" ,f);
 	this->clickFunc = f;
 }
 

@@ -13,6 +13,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"Vertex.hpp"
+#include"string.h"
 
 const int height = 26;
 const int width = 120;

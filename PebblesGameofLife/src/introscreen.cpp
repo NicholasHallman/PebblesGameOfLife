@@ -18,19 +18,26 @@ void intro(){
 	if(!introVisit){
 		Button s20;
 		s20.Name(( const unsigned char*)"20x20");
-		s20.SetPosition(Vertex(10,10,0));
+		s20.SetPosition(Vertex(10,30,0));
 		s20.onClick(but1);
 		buttons[0] = s20;
 
-		Button s40;
-		s40.Name(( const unsigned char*)"40x40");
-		s40.SetPosition(Vertex(140,10,0));
-		s40.onClick(but2);
-		buttons[1] = s40;
+		Button s50;
+		s50.Name(( const unsigned char*)"50x50");
+		s50.SetPosition(Vertex(140,30,0));
+		s50.onClick(but2);
+		buttons[1] = s50;
+
+		Button s100;
+		s100.Name(( const unsigned char*)"100x100");
+		s100.SetPosition(Vertex(270,30,0));
+		s100.onClick(but3);
+		buttons[2] = s100;
 	}
 
 	buttons[0].Draw();
 	buttons[1].Draw();
+	buttons[2].Draw();
 	introVisit = true;
 }
 
@@ -39,7 +46,11 @@ void but1(){
 }
 
 void but2(){
-	printf("set 40x40! \n");
+	printf("set 50x50! \n");
+}
+
+void but3(){
+	printf("set 100x100! \n");
 }
 
 
