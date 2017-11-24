@@ -9,6 +9,8 @@
 int speedX = 0;
 int speedY = 0;
 
+int runs = 0;
+
 void mouseOver(int x, int y){
 	y = 768 - y;
 	int change = 0;
@@ -37,8 +39,8 @@ void mouseClicked(int button, int state, int x, int y){
 	}
 
 	if(pState == 2 && button == 0 && state == 1 && y < 730){
-		int relX = floor(x - ( floor(1366 - (12 * map.size))/2) - map.x) / 12;
-		int relY = floor(y - ( floor((768  - (12 * map.size))/2) - 18) - map.y) / 12;
+		int relX = floor(x - ( floor(1366 - (CSIZE * map.size))/2) - map.x) / CSIZE;
+		int relY = floor(y - ( floor((768  - (CSIZE * map.size))/2) - 18) - map.y) / CSIZE;
 		if(relX >= 0 && relX < 200 && relY >= 0 && relY < 200){
 			if(map.cells[relX][relY].newState == 1){
 				map.cells[relX][relY].newState = 0;
@@ -99,9 +101,14 @@ int buttonOver(int x, int y){
 }
 
 void timer(int x){
+	runs ++;
 	map.x += speedX;
 	map.y += speedY;
-	simulate2D();
+	if(runs == 10){
+		runs = 0;
+		simulate2D();
+	}
+
 	if (x)
 	glutPostRedisplay();
 	glutTimerFunc(16, timer, x);

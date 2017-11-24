@@ -16,13 +16,14 @@
 #include"events.hpp"
 #include"draw.hpp"
 #include"simulate.hpp"
+#include"toolbar.h"
 
 using namespace peb;
 
 extern Button buttons[];
 extern bool introVisit;
 extern int pState;
-
+extern int CSIZE;
 typedef struct cell{
 	int newState;
 	int oldState;

@@ -9,8 +9,8 @@
 
 
 void drawGrid(){
-	int width = 12 * map.size;
-	int height = 12 * map.size;
+	int width = CSIZE * map.size;
+	int height = CSIZE * map.size;
 	int startx = (1366 - width) / 2;
 	int starty = (730 - height) / 2;
 	glColor3f(.4,.4,.4);
@@ -35,8 +35,8 @@ void drawGrid(){
 }
 
 void drawCells(){
-	int width = 12 * map.size;
-	int height = 12 * map.size;
+	int width = CSIZE * map.size;
+	int height = CSIZE * map.size;
 	int startx = (1366 - width) / 2;
 	int starty = (768 - height) / 2;
 
@@ -47,10 +47,10 @@ void drawCells(){
 			if(map.cells[x][y].newState == 1){
 				glColor3f(1.0,0.0,0.0);
 				glBegin(GL_QUADS);
-					glVertex2d(map.x + startx + (x * 12)      , map.y + starty + ((y + 1) * 12));
-					glVertex2d(map.x + startx + ((x + 1) * 12), map.y + starty + ((y + 1) * 12));
-					glVertex2d(map.x + startx + ((x + 1) * 12), map.y + starty + (y * 12));
-					glVertex2d(map.x + startx + (x * 12)      , map.y + starty + (y * 12));
+					glVertex2d(map.x + startx + (x * CSIZE)      , map.y + starty + ((y + 1) * CSIZE));
+					glVertex2d(map.x + startx + ((x + 1) * CSIZE), map.y + starty + ((y + 1) * CSIZE));
+					glVertex2d(map.x + startx + ((x + 1) * CSIZE), map.y + starty + (y * CSIZE));
+					glVertex2d(map.x + startx + (x * CSIZE)      , map.y + starty + (y * CSIZE));
 				glEnd();
 			}
 			map.cells[x][y].oldState = map.cells[x][y].newState;

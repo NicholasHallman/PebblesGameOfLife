@@ -12,6 +12,7 @@
 int widthG = 1366;
 int heightG = 768;
 int pState = 1;
+int CSIZE = 20;
 
 Button buttons[10];
 bool introVisit = false;

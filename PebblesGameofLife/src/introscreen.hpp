@@ -12,15 +12,10 @@
 #include"Button.h"
 #include"main.hpp"
 #include"simulate.hpp"
+#include"toolbar.h"
 
 void intro(void);
-void toolbar();
 
-void but1(void);
-void but2(void);
-void but3(void);
-void but4(void);
-void but5(void);
 void startSim(void);
 void stopSim(void);
 void addSim();
