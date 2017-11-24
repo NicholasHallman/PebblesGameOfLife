@@ -20,5 +20,6 @@ void but2(void);
 void but3(void);
 void but4(void);
 void but5(void);
+void addSim();
 
 #endif /* INTROSCREEN_HPP_ */

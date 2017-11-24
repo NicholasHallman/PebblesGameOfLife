@@ -30,7 +30,9 @@ typedef struct cell{
 
 typedef struct cellMap{
 	int size;
-	cell map[200][200];
+	int x;
+	int y;
+	cell cells[200][200];
 	// if you can figure out how to make
 	// this dynamic plz do
 }cellMap;

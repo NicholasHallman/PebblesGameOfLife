@@ -38,8 +38,10 @@ void renderer(){
 
 		break;
 	case 2:
-		toolbar();
+		drawCells();
 		drawGrid();
+
+		toolbar();
 		//user draws on cell map to add cells;
 		break;
 	case 3:
@@ -56,6 +58,12 @@ void renderer(){
 	glutSwapBuffers();
 }
 
+void initButton(){
+	for(int i = 0; i < 20; i++){
+		buttons[i].active = false;
+	}
+}
+
 int main(int argv, char* argc[]) {
 
 	glutInit(&argv, argc);
@@ -66,6 +74,8 @@ int main(int argv, char* argc[]) {
 	glutCreateWindow("Pebble's game of life");
 
 	init2D();
+	initButton();
+	mapChangePos(1);
 	/*
 	glutGameModeString("1366x768");
 	glutEnterGameMode();
@@ -73,6 +83,8 @@ int main(int argv, char* argc[]) {
 
 	glutPassiveMotionFunc(mouseOver);
 	glutMouseFunc(mouseClicked);
+	glutKeyboardFunc(keyPress);
+	glutKeyboardUpFunc(keyRelease);
 	glutDisplayFunc(renderer);
 	glutMainLoop();
 

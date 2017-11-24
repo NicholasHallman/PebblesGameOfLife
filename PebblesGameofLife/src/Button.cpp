@@ -10,7 +10,7 @@
 namespace peb {
 
 Button::Button() {
-	rWidth = 0;
+	rWidth = -1;
 	hover = false;
 	clickFunc = NULL;
 	name = (unsigned char*)"";

@@ -11,5 +11,6 @@
 
 void drawGrid();
 
+void drawCells();
 
 #endif /* DRAW_HPP_ */
