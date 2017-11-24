@@ -20,6 +20,7 @@ void but4(void);
 void but5(void);
 void bplus();
 void bminus();
+void bfull();
 
 
 #endif /* TOOLBAR_H_ */

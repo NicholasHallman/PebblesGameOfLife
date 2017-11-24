@@ -77,14 +77,16 @@ int main(int argv, char* argc[]) {
 	glutInitWindowPosition(100,100);
 	glutInitWindowSize(1366,768);
 	glutCreateWindow("Pebble's game of life");
-
-	init2D();
-	initButton();
-	timer(1);
 	/*
 	glutGameModeString("1366x768");
 	glutEnterGameMode();
 	*/
+	init2D();
+	initButton();
+	timer(1);
+
+
+
 
 	glutPassiveMotionFunc(mouseOver);
 	glutMouseFunc(mouseClicked);

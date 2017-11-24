@@ -64,6 +64,13 @@ void toolbar(){
 		sminus.onClick(bminus);
 		sminus.active = true;
 		buttons[7] = sminus;
+
+		Button sfull;
+		sfull.Name(( const unsigned char*)"Full Screen");
+		sfull.SetPosition(Vertex(sminus.position.x + sminus.rWidth + 50,bh,0));
+		sfull.onClick(bfull);
+		sfull.active = false;
+		buttons[8] = sfull;
 	}
 	for(int i = 0; i < 20; i++){
 		if(buttons[i].active){
@@ -108,6 +115,13 @@ void bplus(){
 }
 void bminus(){
 	CSIZE -= 5;
+}
+
+void bfull(){
+	glutGameModeString("1366x768");
+	glutEnterGameMode();
+	init2D();
+	glutPostRedisplay();
 }
 
 
