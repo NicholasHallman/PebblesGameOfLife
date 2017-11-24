@@ -13,4 +13,6 @@ void drawGrid();
 
 void drawCells();
 
+void drawColorWheel();
+
 #endif /* DRAW_HPP_ */

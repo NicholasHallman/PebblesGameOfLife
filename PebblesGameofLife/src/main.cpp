@@ -13,6 +13,8 @@ int widthG = 1366;
 int heightG = 768;
 int pState = 1;
 int CSIZE = 20;
+bool colorW = false;
+float colors[3] = {1,0,0};
 
 Button buttons[20];
 bool introVisit = false;
@@ -42,6 +44,9 @@ void renderer(){
 		drawCells();
 		drawGrid();
 		toolbar();
+		if(colorW){
+			drawColorWheel();
+		}
 		break;
 	case 3:
 		drawCells();

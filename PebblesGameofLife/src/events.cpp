@@ -32,13 +32,24 @@ void mouseOver(int x, int y){
 }
 
 void mouseClicked(int button, int state, int x, int y){
+	bool leftC = false;
+	bool rightC = false;
+
+	if(button == 0 && state == 1) leftC = true;
+	if(button == 2 && state == 1) rightC = true;
+
+	if(leftC && colorW){
+		glReadPixels(x,768 - y,1,1,GL_RGB,GL_FLOAT, colors);
+		colorW = false;
+	}
+
 	y = 768 - y;
 	int index = buttonOver(x,y);
-	if(index != -1 && button == 0 && state == 1){
+	if(index != -1 && leftC){
 		buttons[index].clicked();
 	}
 
-	if(pState == 2 && button == 0 && state == 1 && y < 730){
+	if(pState == 2 && leftC && y < 730 && !colorW){
 		int relX = floor(x - ( floor(1366 - (CSIZE * map.size))/2) - map.x) / CSIZE;
 		int relY = floor(y - ( floor((768  - (CSIZE * map.size))/2) - 18) - map.y) / CSIZE;
 		if(relX >= 0 && relX < 200 && relY >= 0 && relY < 200){
@@ -50,7 +61,7 @@ void mouseClicked(int button, int state, int x, int y){
 		}
 	}
 
-	if((pState == 2 || pState == 3) && button == 2 && state == 1){
+	if((pState == 2 || pState == 3) && rightC){
 		map.x = 0;
 		map.y = 0;
 	}

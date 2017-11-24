@@ -77,13 +77,13 @@ void toolbar(){
 		scolor.Name(( const unsigned char*)"Color");
 		scolor.SetPosition(Vertex(sfull.position.x + sfull.rWidth + 10,bh,0));
 		scolor.onClick(bcolor);
-		scolor.active = false;
-		scolor.broken = true;
+		scolor.active = true;
+		scolor.broken = false;
 		buttons[9] = scolor;
 
 		Button sre;
 		sre.Name(( const unsigned char*)"Clear");
-		sre.SetPosition(Vertex(scolor.position.x + scolor.rWidth + 20,bh,0));
+		sre.SetPosition(Vertex(scolor.position.x + scolor.rWidth + 10,bh,0));
 		sre.onClick(breset);
 		sre.active = true;
 		buttons[10] = sre;
@@ -149,9 +149,7 @@ void bfull(){
 }
 
 void bcolor(){
-	glutInitWindowPosition(100,100);
-	glutInitWindowSize(500,500);
-	int colorW = glutCreateWindow("ColorPicker");
+	colorW = true;
 }
 
 void breset(){

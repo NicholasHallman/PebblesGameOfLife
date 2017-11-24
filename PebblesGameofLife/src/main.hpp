@@ -24,6 +24,9 @@ extern Button buttons[];
 extern bool introVisit;
 extern int pState;
 extern int CSIZE;
+extern bool colorW;
+extern float colors[];
+
 typedef struct cell{
 	int newState;
 	int oldState;
