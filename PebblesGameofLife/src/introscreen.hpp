@@ -9,6 +9,8 @@
 #define INTROSCREEN_HPP_
 
 #include<GL/freeglut.h>
+#include"Button.h"
+#include"main.hpp"
 
 void intro(void);
 

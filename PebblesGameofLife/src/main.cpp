@@ -9,13 +9,15 @@
 
 #include"main.hpp"
 
-int widthG = 1280;
-int heightG = 720;
+int widthG = 1366;
+int heightG = 768;
 int pState = 1;
+
+Button buttons[10];
 
 void init2D(void) {
 	glLoadIdentity();
-	glViewport(0,0,640,480);
+	glViewport(0,0,widthG,heightG);
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0.0, widthG,0.0, heightG);
@@ -61,8 +63,13 @@ int main(int argv, char* argc[]) {
 	glutInit(&argv, argc);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 
-	glutGameModeString("1280x720");
+	glutInitWindowPosition(100,100);
+	glutInitWindowSize(1366,768);
+	glutCreateWindow("Pebble's game of life");
+
+	glutGameModeString("1366x768");
 	glutEnterGameMode();
+
 
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(renderer);

@@ -12,6 +12,11 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include"introscreen.hpp"
+#include"Button.h"
+
+using namespace peb;
+
+extern Button buttons[];
 
 typedef struct cell{
 	int newState;
