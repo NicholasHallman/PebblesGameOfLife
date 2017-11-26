@@ -21,16 +21,19 @@ Button buttons[20];
 bool introVisit = false;
 cellMap map;
 
+Camera myCamera;
+
 void init2D(void) {
 	glLoadIdentity();
 	glViewport(0,0,widthG,heightG);
-	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0.0, widthG,0.0, heightG);
 }
 
-void init3D() {
-
+void init3D(void) {
+	glClearColor(0.0, 0.0, 0.0, 1.0);
+	myCamera.setProjectionMatrix();
 }
 
 void renderer(){

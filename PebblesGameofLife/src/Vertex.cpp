@@ -19,7 +19,7 @@ Vertex::Vertex() {
 	z = 0;
 }
 
-Vertex::Vertex(int x, int y, int z) {
+Vertex::Vertex(double x, double y, double z) {
 	this->x = x;
 	this->y = y;
 	this->z = z;
@@ -29,6 +29,13 @@ void Vertex::setVertex(double newX, double newY, double newZ){
 	this->x = newX;
 	this->y = newY;
 	this->z = newZ;
+	return;
+}
+
+void Vertex::setVertex(Vertex& v) {
+	this->x = v.x;
+	this->y = v.y;
+	this->z = v.z;
 	return;
 }
 

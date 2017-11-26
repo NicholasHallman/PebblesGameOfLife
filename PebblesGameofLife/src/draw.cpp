@@ -37,8 +37,8 @@ void drawGrid(){
 void drawCells(){
 	int width = CSIZE * map.size;
 	int height = CSIZE * map.size;
-	int startx = (1366 - width) / 2;
-	int starty = (768 - height) / 2;
+	int startx = (1366 - width - 2) / 2;
+	int starty = (768 - height - 2) / 2;
 
 	starty -= 18;
 

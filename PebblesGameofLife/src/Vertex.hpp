@@ -19,12 +19,14 @@ public:
 	double y;
 	double z;
 	void setVertex(double newX, double newY, double newZ);
+	void setVertex(Vertex& v);
 	void changeVertex(double newX, double newY, double newZ);
 	Vertex();
-	Vertex(int x,int y,int z);
+	Vertex(double x,double y,double z);
 	virtual ~Vertex();
 	void printValues();
 	void drawVertex();
+
 };
 
 } /* namespace hall7790 */

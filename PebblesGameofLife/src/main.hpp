@@ -17,6 +17,7 @@
 #include"draw.hpp"
 #include"simulate.hpp"
 #include"toolbar.h"
+#include"camera.h"
 
 using namespace peb;
 
