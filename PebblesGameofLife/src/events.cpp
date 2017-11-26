@@ -2,7 +2,8 @@
  * events.cpp
  *
  *  Created on: Nov 23, 2017
- *      Author: Advanderar
+ *      Author: Nicholas Hallman
+ *      		Omid Ghiyasian
  */
 #include"events.hpp"
 

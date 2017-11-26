@@ -3,8 +3,9 @@
  * 	HongBing Fan
  *
  *  Created on: Nov 23, 2017
- *      Author: 	Omid Ghiyasian
- *      			Nicholas Hallman
+ *      Authors: 	Nicholas Hallman
+ *      			Omid Ghiyasian
+ *
  */
 
 #include"main.hpp"
