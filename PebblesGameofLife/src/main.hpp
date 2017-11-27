@@ -38,7 +38,7 @@ typedef struct cellMap{
 	int size;
 	int x;
 	int y;
-	cell cells[200][200];
+	cell** cells;
 	// if you can figure out how to make
 	// this dynamic plz do
 }cellMap;

@@ -12,6 +12,8 @@ namespace peb {
 Button::Button() {
 	rWidth = -1;
 	hover = false;
+	broken = false;
+	active = false;
 	clickFunc = NULL;
 	name = (unsigned char*)"";
 	position.setVertex(-1,-1,-1);
@@ -72,7 +74,7 @@ void Button::Name(const unsigned char* name){
 	this->name = name;
 	//goes through every character and adds the length of the character to a
 	//variable used to determine the width of the button
-	for(int i = 0; i < strlen((char *)name); i++){ //This gives a warning but it works
+	for(int i = 0; i < (int)strlen((char *)name); i++){ //This gives a warning but it works
 		rWidth += glutBitmapWidth(GLUT_BITMAP_HELVETICA_18, name[i]);
 	}
 	rWidth += 10;

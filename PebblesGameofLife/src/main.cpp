@@ -29,6 +29,12 @@ void init2D(void) {
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0.0, widthG,0.0, heightG);
+
+	//Default grid
+	map.size = 20;
+	map.cells = (cell **)malloc(map.size*sizeof(cell *));
+	for(int i = 0;i < map.size; ++i)
+	  	map.cells[i] = (cell *)malloc(map.size*sizeof(cell));
 }
 
 void init3D(void) {
@@ -38,10 +44,12 @@ void init3D(void) {
 
 void renderer(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	switch(pState){
 	case 1:
 		// Opens program on the intro screen
 		intro();
+		drawGrid();
 		break;
 	case 2:
 		//user draws on cell map to add cells;
@@ -96,9 +104,6 @@ int main(int argv, char* argc[]) {
 	init2D();
 	initButton();
 	timer(1);
-
-
-
 
 	glutPassiveMotionFunc(mouseOver);
 	glutMouseFunc(mouseClicked);

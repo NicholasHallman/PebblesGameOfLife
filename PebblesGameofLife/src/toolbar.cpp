@@ -98,34 +98,51 @@ void toolbar(){
 	introVisit = true;
 }
 
+void update_grid() {
+	map.cells = (cell **)malloc(map.size*sizeof(cell *)); //allocate the new size
+	for(int i = 0;i < map.size; ++i)
+		map.cells[i] = (cell *)malloc(map.size*sizeof(cell));
+	return;
+}
+
 void but1(){
 	map.size = 20;
+	update_grid();
 	pState = 2;
 	addSim();
+
 }
 
 void but2(){
 	map.size = 50;
+	update_grid();
 	pState = 2;
 	addSim();
+
 }
 
 void but3(){
 	map.size = 100;
+	update_grid();
 	pState = 2;
 	addSim();
+
 }
 
 void but4(){
 	map.size = 150;
+	update_grid();
 	pState = 2;
 	addSim();
+
 }
 
 void but5(){
 	map.size = 200;
+	update_grid();
 	pState = 2;
 	addSim();
+
 }
 
 void bplus(){
