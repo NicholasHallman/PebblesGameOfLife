@@ -25,6 +25,7 @@ private:
 	void (*clickFunc)(void);
 	const unsigned char * name;
 public:
+	int id;
 	bool active;
 	bool broken;
 	bool hover;

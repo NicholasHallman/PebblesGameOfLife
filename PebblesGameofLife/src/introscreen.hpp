@@ -18,6 +18,7 @@ void intro(void);
 
 void startSim(void);
 void stopSim(void);
+void quitProgram(void);
 void addSim();
 
 #endif /* INTROSCREEN_HPP_ */

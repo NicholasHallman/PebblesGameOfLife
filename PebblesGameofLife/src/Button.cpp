@@ -6,6 +6,7 @@
  */
 
 #include "Button.h"
+#include "main.hpp"
 
 namespace peb {
 
@@ -27,10 +28,26 @@ Button::~Button() {
 void Button::Draw(){
 	// if the mouse is over the button make it white
 	if(hover){
-		glColor3f(1,1,1);
+		if (this->id == 10)
+			if (canSim == false)
+				glColor3f(0.5, 1.0, 0.5);
+			else
+				glColor3f(0.8, 0.3, 0.3);
+		else if (this->id == 11)
+			glColor3f(0.8, 0.3, 0.3);
+		else
+			glColor3f(1.0,1.0,1.0);
 	} else{
 		// otherwise make it gray
-		glColor3f(.5,.55,.6);
+		if (this->id == 10)
+			if (canSim == true)
+				glColor3f(0.6, 0.2, 0.2);
+			else
+				glColor3f(0.3, 0.8, 0.3);
+		else if (this->id == 11)
+			glColor3f(0.6, 0.2, 0.2);
+		else
+			glColor3f(.5,.55,.6);
 	}
 	//draws a rectangle that is 26 pixels tall and the
 	//length of the name wide plus a 5 pixel buffer
@@ -47,7 +64,7 @@ void Button::Draw(){
 }
 
 void Button::DrawBroken(){
-	// if the mouse is over the button make it white
+	// if the mouse is over the button make it broken color
 	if(hover){
 		glColor3f(.6,0,0);
 	} else{
