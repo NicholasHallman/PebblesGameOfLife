@@ -12,7 +12,7 @@
 
 int widthG = 1366;
 int heightG = 768;
-int pState = 1;
+int pState = 2;
 int CSIZE = 20;
 bool colorW = false;
 float colors[3] = {1,0,0};
@@ -32,9 +32,9 @@ void init2D(void) {
 
 	//Default grid
 	map.size = 20;
-	map.cells = (cell **)malloc(map.size*sizeof(cell *));
+	map.cells = (cell **)calloc(map.size,sizeof(cell *));
 	for(int i = 0;i < map.size; ++i)
-	  	map.cells[i] = (cell *)malloc(map.size*sizeof(cell));
+	  	map.cells[i] = (cell *)calloc(map.size,sizeof(cell));
 }
 
 void init3D(void) {

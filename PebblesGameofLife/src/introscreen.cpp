@@ -33,7 +33,7 @@ void stopSim(){
 	buttons[5].onClick(startSim);
 	pState = 2;
 }
-
+/*
 void addSim(){
 	Button sim;
 	sim.Name(( const unsigned char*)"Simulate");
@@ -42,6 +42,6 @@ void addSim(){
 	sim.active = true;
 	buttons[5] = sim;
 }
-
+*/
 
 

@@ -87,6 +87,13 @@ void toolbar(){
 		sre.onClick(breset);
 		sre.active = true;
 		buttons[10] = sre;
+
+		Button sim;
+		sim.Name(( const unsigned char*)"Simulate");
+		sim.SetPosition(Vertex(1270,735,0));
+		sim.onClick(startSim);
+		sim.active = true;
+		buttons[5] = sim;
 	}
 	for(int i = 0; i < 20; i++){
 		if(buttons[i].active){
@@ -109,7 +116,7 @@ void but1(){
 	map.size = 20;
 	update_grid();
 	pState = 2;
-	addSim();
+	//addSim();
 
 }
 
@@ -117,7 +124,7 @@ void but2(){
 	map.size = 50;
 	update_grid();
 	pState = 2;
-	addSim();
+	//addSim();
 
 }
 
@@ -125,7 +132,7 @@ void but3(){
 	map.size = 100;
 	update_grid();
 	pState = 2;
-	addSim();
+	//addSim();
 
 }
 
@@ -133,7 +140,7 @@ void but4(){
 	map.size = 150;
 	update_grid();
 	pState = 2;
-	addSim();
+	//addSim();
 
 }
 
@@ -141,7 +148,7 @@ void but5(){
 	map.size = 200;
 	update_grid();
 	pState = 2;
-	addSim();
+	//addSim();
 
 }
 
@@ -170,8 +177,8 @@ void bcolor(){
 }
 
 void breset(){
-	for(int y = 0; y < 200; y++){
-		for(int x = 0; x < 200; x++){
+	for(int y = 0; y < map.size; y++){
+		for(int x = 0; x < map.size; x++){
 			map.cells[x][y].oldState = 0;
 			map.cells[x][y].newState = 0;
 		}
