@@ -11,10 +11,10 @@
 #include "Matrix.hpp"
 
 Camera::Camera() {
-	eye.x = 3.0, eye.y = 3.0, eye.z = 7.0;
+	eye.x = 6.0, eye.y = 6.0, eye.z = 14.0;
 	reference.x = 0.0, reference.y = 0.0, reference.z = 0.0;
-	viewup.x = 0.0,viewup.y = 1.0, viewup.z = 0.0;
-	aspect = 1.0, viewAngle = 40.0, nearDist = 1.0, farDist = 20.0;
+	viewup.x = 0.0,viewup.y = 0.0, viewup.z = 1.0;
+	aspect = 1.0, viewAngle = 40.0, nearDist = 1.0, farDist = 50.0;
 }
 
 void Camera::setDefaultCamera(void) {

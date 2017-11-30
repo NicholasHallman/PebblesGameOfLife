@@ -81,25 +81,3 @@ void drawColorWheel(){
 		glVertex2d(768,634);
 	glEnd();
 }
-
-void drawDoughnut() {
-	int C = 50;
-	int A = 25;
-	int x = 0;
-	int y = 0;
-	int z = 0;
-
-	glPushMatrix();
-	for (int v = 0; v < 360; v++) {
-		z = A*(float)sin(v*(M_PI/180));
-		glBegin(GL_LINE_LOOP);
-		for (int u = 0; u < 360; u++) {
-			x = (C + A*(float)cos(v*(M_PI/180)))*(float)cos(u*(M_PI/180));
-			y = (C + A*(float)cos(v*(M_PI/180)))*(float)sin(u*(M_PI/180));
-			glVertex3f(x,y,z);
-		}
-		glEnd();
-	}
-
-	glPopMatrix();
-}

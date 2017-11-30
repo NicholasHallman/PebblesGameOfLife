@@ -20,6 +20,7 @@ float colors[3] = {1,0,0};
 Button buttons[20];
 bool introVisit = false;
 cellMap map;
+World myWorld;
 
 Camera myCamera;
 
@@ -39,6 +40,7 @@ void init2D(void) {
 
 void init3D(void) {
 	glClearColor(0.0, 0.0, 0.0, 1.0);
+	myCamera.setProjectionMatrix();
 	pState = 5;
 }
 
@@ -73,9 +75,10 @@ void renderer(){
 		//User inputs seed for generation, selects shape;
 		break;
 	case 5:
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		myCamera.setProjectionMatrix();
 		glColor3f(.4,.4,.4);
-		drawDoughnut();
+		myWorld.draw_world();
 		glFlush();
 		//Doughnut Simulation;
 		break;

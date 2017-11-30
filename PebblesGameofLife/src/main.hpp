@@ -18,6 +18,9 @@
 #include"simulate.hpp"
 #include"toolbar.h"
 #include"camera.h"
+#include"Shape.hpp"
+#include "Torus.hpp"
+#include"World.hpp"
 
 using namespace peb;
 
