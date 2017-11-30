@@ -100,7 +100,7 @@ void toolbar(){
 
 		Button sim;
 		sim.Name(( const unsigned char*)"Simulate");
-		sim.SetPosition(Vertex(sre.position.x + scolor.rWidth + 10,bh,0));
+		sim.SetPosition(Vertex(sre.position.x + sre.rWidth + 10,bh,0));
 		sim.onClick(startSim);
 		sim.active = true;
 		buttons[10] = sim;
@@ -113,6 +113,15 @@ void toolbar(){
 		quit.active = true;
 		buttons[11] = quit;
 		buttons[11].id = 11;
+
+		Button three_dimension;
+		three_dimension.Name(( const unsigned char*)"3-Dimension");
+		three_dimension.SetPosition(Vertex(sim.position.x + sim.rWidth + 10,bh,0));
+		three_dimension.onClick(init3D);
+		three_dimension.active = true;
+		buttons[12] = three_dimension;
+		buttons[12].id = 12;
+
 	}
 	for(int i = 0; i < 20; i++){
 		if(buttons[i].active){

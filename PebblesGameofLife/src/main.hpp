@@ -46,5 +46,6 @@ typedef struct cellMap{
 extern cellMap map;
 
 void init2D();
+void init3D();
 
 #endif /* MAIN_HPP_ */

@@ -39,7 +39,7 @@ void init2D(void) {
 
 void init3D(void) {
 	glClearColor(0.0, 0.0, 0.0, 1.0);
-	myCamera.setProjectionMatrix();
+	pState = 5;
 }
 
 void renderer(){
@@ -73,6 +73,10 @@ void renderer(){
 		//User inputs seed for generation, selects shape;
 		break;
 	case 5:
+		myCamera.setProjectionMatrix();
+		glColor3f(.4,.4,.4);
+		drawDoughnut();
+		glFlush();
 		//Doughnut Simulation;
 		break;
 	case 6:
