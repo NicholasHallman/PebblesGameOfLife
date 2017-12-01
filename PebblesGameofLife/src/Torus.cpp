@@ -13,13 +13,13 @@ Torus::Torus() {
 	x = 0;
 	y = 0;
 	z = 0;
-	grid_size = 30;
+	grid_size = 36;
 }
 
 void Torus::draw() {
 	glPushMatrix();
 	for (int v = 0; v < grid_size; v++) {
-
+		glColor3f(1.0,1.0,0.0);
 		glBegin(GL_LINE_LOOP);
 		for (int u = 0; u < grid_size; u++) {
 			x = (C + A*(float)cos(v*(2*M_PI/grid_size)))*(float)cos(u*(2*M_PI/grid_size));
