@@ -10,31 +10,26 @@ bool canSim = false;
 
 void simulate2D(){
 	if(canSim){
+		int neighbours;
+		int newstate;
 		for(int y = 0; y < map.size; y++){
 			for(int x = 0; x < map.size; x++){
-				int n = 0;
-				if(y != 0){
-					if(x != 0 && map.cells[x-1][y-1].oldState == 1) n++;
-					if(map.cells[x][y-1].oldState == 1)   n++;
-					if(x != 199 && map.cells[x+1][y-1].oldState == 1) n++;
-				}
-
-				if(x != 0 && map.cells[x-1][y].oldState == 1)   n++;
-				if(x != 199 && map.cells[x+1][y].oldState == 1)   n++;
-
-				if(y != 199){
-					if(x != 0 && map.cells[x-1][y+1].oldState == 1) n++;
-					if(map.cells[x][y+1].oldState == 1)   n++;
-					if(x != 199 && map.cells[x+1][y+1].oldState == 1) n++;
-				}
-
-				if(map.cells[x][y].oldState == 1){
-					if(n < 2) map.cells[x][y].newState = 0;
-					else if(n > 3) map.cells[x][y].newState = 0;
-					else map.cells[x][y].newState = 1;
-				} else{
-					if(n == 3) map.cells[x][y].newState = 1;
-				}
+					//Calculate the number of live processes around the cell
+					neighbours = 	map.cells[(x - 1 + map.size) % map.size][y].oldState +
+							map.cells[(x - 1 + map.size) % map.size][(y - 1 + map.size) % map.size].oldState +
+							map.cells[(x - 1 + map.size) % map.size][(y + 1) % map.size].oldState +
+							map.cells[(x + 1) % map.size][y].oldState +
+							map.cells[(x + 1) % map.size][(y - 1 + map.size) % map.size].oldState +
+							map.cells[(x + 1) % map.size][(y + 1) % map.size].oldState +
+							map.cells[x][(y - 1 + map.size) % map.size].oldState +
+							map.cells[x][(y + 1) % map.size].oldState;
+					newstate = 0;
+					//Update the cell's newstate based on the neighbours
+					if(map.cells[x][y].oldState == 1 && (neighbours == 2 || neighbours == 3))
+						newstate = 1;
+					else if(map.cells[x][y].oldState == FALSE && neighbours == 3)
+							newstate = 1;
+					map.cells[x][y].newState = newstate;
 			}
 		}
 	}

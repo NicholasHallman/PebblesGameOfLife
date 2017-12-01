@@ -23,17 +23,24 @@ void intro(){
 void startSim(){
 	canSim = true;
 	pState = 3;
-	buttons[5].Name(( const unsigned char*)"Stop");
-	buttons[5].onClick(stopSim);
+	buttons[10].Name(( const unsigned char*)"Stop");
+	buttons[10].onClick(stopSim);
 }
 
 void stopSim(){
 	canSim = false;
-	buttons[5].Name(( const unsigned char*)"Simulate");
-	buttons[5].onClick(startSim);
+	buttons[10].Name(( const unsigned char*)"Simulate");
+	buttons[10].onClick(startSim);
 	pState = 2;
 }
 
+void quitProgram() {
+	for(int i = 0;i < map.size; ++i)
+	    free(map.cells[i]);
+	free(map.cells);
+	exit(0);
+}
+/*
 void addSim(){
 	Button sim;
 	sim.Name(( const unsigned char*)"Simulate");
@@ -42,6 +49,6 @@ void addSim(){
 	sim.active = true;
 	buttons[5] = sim;
 }
-
+*/
 
 

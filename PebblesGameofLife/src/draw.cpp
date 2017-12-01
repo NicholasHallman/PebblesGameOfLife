@@ -7,7 +7,6 @@
 
 #include"main.hpp"
 
-
 void drawGrid(){
 	int width = CSIZE * map.size;
 	int height = CSIZE * map.size;
@@ -80,8 +79,5 @@ void drawColorWheel(){
 		glVertex2d(268,634);
 		glColor3f(0,0,1);
 		glVertex2d(768,634);
-
-
 	glEnd();
 }
-

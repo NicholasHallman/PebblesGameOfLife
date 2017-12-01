@@ -12,7 +12,6 @@
 
 
 void toolbar();
-
 void but1(void);
 void but2(void);
 void but3(void);

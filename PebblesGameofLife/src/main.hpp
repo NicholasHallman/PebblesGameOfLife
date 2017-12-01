@@ -18,6 +18,9 @@
 #include"simulate.hpp"
 #include"toolbar.h"
 #include"camera.h"
+#include"Shape.hpp"
+#include "Torus.hpp"
+#include"World.hpp"
 
 using namespace peb;
 
@@ -38,7 +41,7 @@ typedef struct cellMap{
 	int size;
 	int x;
 	int y;
-	cell cells[200][200];
+	cell** cells;
 	// if you can figure out how to make
 	// this dynamic plz do
 }cellMap;
@@ -46,5 +49,6 @@ typedef struct cellMap{
 extern cellMap map;
 
 void init2D();
+void init3D();
 
 #endif /* MAIN_HPP_ */
