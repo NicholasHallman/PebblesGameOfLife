@@ -20,7 +20,7 @@ extern int CSIZE;
 extern bool colorW;
 extern float colors[];
 extern struct cellMap map;
-
+extern struct cellMap3D map3D;
 
 
 #endif /* GLOBAL_HPP_ */

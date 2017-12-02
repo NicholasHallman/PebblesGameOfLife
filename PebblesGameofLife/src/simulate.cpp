@@ -62,7 +62,7 @@ void simulate2D(){
 					//Update the cell's newstate based on the neighbours
 					if(map.cells[x][y].oldState == 1 && (neighbours == 2 || neighbours == 3))
 						newstate = 1;
-					else if(map.cells[x][y].oldState == FALSE && neighbours == 3)
+					else if(map.cells[x][y].oldState == 0 && neighbours == 3)
 							newstate = 1;
 					map.cells[x][y].newState = newstate;
 			}
@@ -70,31 +70,52 @@ void simulate2D(){
 	}
 	glutPostRedisplay();
 }
-/*
+
 void simulate3D(){
-	for(int x = 0; x < map.size; x++){
-		for(int y = 0; y < map.size; y++){
-			for(int z = 0; z < map.size; map++){
-				int neighbors = checkNeightbors3D(x,y,z);
-				if(map.cells[x][y].oldState == 1 && (neighbours == 2 || neighbours == 3))
-			}
-		}
-	}
-}
-
-int checkNeighbors3D(int x, int y, int z){
-	int neighbors = 0;
-	for(int i = x - 1; i <= x + 1; i++){
-		for(int j = y - 1; j <= j + 1; j ++){
-			for(int k = z - 1; z <= k + 1; k++){
-				if(i != x && j != y && k != z){
-					neighbors += map.cells[(i + map.size) % map.size][(j + map.size) % map.size][(k + map.size) % map.size].oldState;
+	if(canSim){
+		int neighbors;
+		int newstate;
+		// DISCLAIMER: DO NOT TRY THIS AT HOME KIDS!!!!
+		for(int z = 0; z < map.size; z++){
+			for(int y = 0; y < map.size; y++){
+				for(int x = 0; x < map.size; x++){
+					neighbors = map3D.cells[(x - 1 + map3D.size) % map3D.size][y][z].oldState +
+							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y - 1 + map3D.size) % map3D.size][z].oldState +
+							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y + 1) % map3D.size][z].oldState +
+							map3D.cells[(x + 1) % map3D.size][y][z].oldState +
+							map3D.cells[(x + 1) % map3D.size][(y - 1 + map3D.size) % map3D.size][z].oldState +
+							map3D.cells[(x + 1) % map3D.size][(y + 1) % map3D.size][z].oldState +
+							map3D.cells[x][(y - 1 + map3D.size) % map3D.size][z].oldState +
+							map3D.cells[x][(y + 1) % map3D.size][z].oldState +
+							map3D.cells[x][y][(z + 1) % map3D.size].oldState +
+							map3D.cells[x][y][(z - 1 + map3D.size) % map3D.size].oldState +
+							map3D.cells[(x - 1 + map3D.size) % map3D.size][y][(z + 1) % map3D.size].oldState +
+							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z + 1) % map3D.size].oldState +
+							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y + 1) % map3D.size][(z + 1) % map3D.size].oldState +
+							map3D.cells[(x + 1) % map3D.size][y][(z + 1) % map3D.size].oldState +
+							map3D.cells[(x + 1) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z + 1) % map3D.size].oldState +
+							map3D.cells[(x + 1) % map3D.size][(y + 1) % map3D.size][(z + 1) % map3D.size].oldState +
+							map3D.cells[x][(y - 1 + map3D.size) % map3D.size][(z + 1) % map3D.size].oldState +
+							map3D.cells[x][(y + 1) % map3D.size][(z + 1) % map3D.size].oldState +
+							map3D.cells[(x - 1 + map3D.size) % map3D.size][y][(z - 1 + map3D.size) % map3D.size].oldState +
+							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
+							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y + 1) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
+							map3D.cells[(x + 1) % map3D.size][y][(z - 1 + map3D.size) % map3D.size].oldState +
+							map3D.cells[(x + 1) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
+							map3D.cells[(x + 1) % map3D.size][(y + 1) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
+							map3D.cells[x][(y - 1 + map3D.size) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
+							map3D.cells[x][(y + 1) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState;
+					newstate = 0;
+					//Update the cell's newstate based on the neighbours
+					if(map3D.cells[x][y][z].oldState == 1 && (neighbors == 4 || neighbors == 5))
+						newstate = 1;
+					else if(map3D.cells[x][y][z].oldState == 0 && neighbors == 5)
+							newstate = 1;
+					map3D.cells[x][y][z].newState = newstate;
 				}
-
 			}
 		}
 	}
-	return neighbors;
 }
-*/
+
 
