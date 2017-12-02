@@ -11,7 +11,7 @@
 #include"main.hpp"
 
 void simulate2D();
-
+void genCells();
 
 extern bool canSim;
 

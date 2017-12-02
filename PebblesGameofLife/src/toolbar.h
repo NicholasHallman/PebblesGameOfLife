@@ -22,6 +22,7 @@ void bminus();
 void bfull();
 void bcolor();
 void breset(void);
+void b3D();
 
 
 #endif /* TOOLBAR_H_ */

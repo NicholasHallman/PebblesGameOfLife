@@ -1,6 +1,7 @@
 #include"toolbar.h"
 
 void toolbar(){
+
 	glColor3f(.3,.35,.4);
 	glBegin(GL_QUADS);
 		glVertex2f(0,768);
@@ -117,7 +118,7 @@ void toolbar(){
 		Button three_dimension;
 		three_dimension.Name(( const unsigned char*)"3-Dimension");
 		three_dimension.SetPosition(Vertex(sim.position.x + sim.rWidth + 10,bh,0));
-		three_dimension.onClick(init3D);
+		three_dimension.onClick(b3D);
 		three_dimension.active = true;
 		buttons[12] = three_dimension;
 		buttons[12].id = 12;
@@ -137,6 +138,12 @@ void update_grid() {
 	map.cells = (cell **)malloc(map.size*sizeof(cell *)); //allocate the new size
 	for(int i = 0;i < map.size; ++i)
 		map.cells[i] = (cell *)malloc(map.size*sizeof(cell));
+	for(int x = 0; x < map.size; x++){
+		for(int y = 0; y < map.size; y++){
+			map.cells[x][y].oldState = 0;
+			map.cells[x][y].newState = 0;
+		}
+	}
 	return;
 }
 
@@ -202,6 +209,14 @@ void bfull(){
 
 void bcolor(){
 	colorW = true;
+}
+
+void b3D(){
+	map.size = 36;
+	update_grid();
+	genCells();
+	init3D();
+	canSim = true;
 }
 
 void breset(){

@@ -39,6 +39,7 @@ void init2D(void) {
 }
 
 void init3D(void) {
+	glEnable(GL_CULL_FACE);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	myCamera.setProjectionMatrix();
 	pState = 5;
@@ -118,5 +119,4 @@ int main(int argv, char* argc[]) {
 	glutKeyboardUpFunc(keyRelease);
 	glutDisplayFunc(renderer);
 	glutMainLoop();
-
 }

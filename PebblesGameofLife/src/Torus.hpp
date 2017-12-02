@@ -10,6 +10,9 @@
 
 #include <GL/glut.h>
 #include "Shape.hpp"
+#include "Vertex.hpp"
+#include<stdio.h>
+#include "main.hpp"
 
 class Torus: public Shape {
 protected:
@@ -20,9 +23,14 @@ protected:
 	GLdouble z;
 	int grid_size;
 public:
+	Vertex faces[36 * 36][4];
 	Torus();
 	void draw();
 	void reset();
+private:
+	void genVertices();
+	void drawSolid();
+	void drawGrid();
 };
 
 #endif /* TORUS_HPP_ */

@@ -21,6 +21,7 @@ void mouseOver(int x, int y){
 		glutSetCursor(GLUT_CURSOR_CROSSHAIR);
 		change = 1;
 		buttons[index].hover = true;
+		glutPostRedisplay();
 	} else{
 		resetHover();
 	}
@@ -28,8 +29,9 @@ void mouseOver(int x, int y){
 
 	if(change == 0){
 		glutSetCursor(GLUT_CURSOR_INHERIT);
+		glutPostRedisplay();
 	}
-	glutPostRedisplay();
+
 }
 
 void mouseClicked(int button, int state, int x, int y){

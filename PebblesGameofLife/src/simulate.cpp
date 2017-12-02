@@ -8,6 +8,19 @@
 
 bool canSim = false;
 
+void genCells(){
+	for(int i = 0; i < map.size; i++){
+		for(int j = 0; j < map.size; j++){
+			if(( (float)rand() / (float)RAND_MAX )  > .5){
+				map.cells[i][j].oldState = 1;
+			}
+			else{
+				map.cells[i][j].oldState = 0;
+			}
+		}
+	}
+}
+
 void simulate2D(){
 	if(canSim){
 		int neighbours;
