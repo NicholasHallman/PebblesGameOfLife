@@ -20,6 +20,7 @@ float colors[3] = {1,0,0};
 Button buttons[20];
 bool introVisit = false;
 cellMap map;
+cellMap3D map3D;
 World myWorld;
 
 Camera myCamera;
@@ -33,9 +34,9 @@ void init2D(void) {
 
 	//Default grid
 	map.size = 20;
-	map.cells = (cell **)malloc(map.size*sizeof(cell *));
+	map.cells = (cell **)calloc(map.size,sizeof(cell *));
 	for(int i = 0;i < map.size; ++i)
-	  	map.cells[i] = (cell *)malloc(map.size*sizeof(cell));
+	  	map.cells[i] = (cell *)calloc(map.size,sizeof(cell));
 }
 
 void init3D(void) {

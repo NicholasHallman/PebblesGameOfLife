@@ -38,6 +38,14 @@ typedef struct cellMap{
 	// this dynamic plz do
 }cellMap;
 
+typedef struct cellMap3D {
+	int size;
+	int x;
+	int y;
+	int z;
+	cell*** cells;
+}cellMap3D;
+
 void init2D();
 void init3D();
 
