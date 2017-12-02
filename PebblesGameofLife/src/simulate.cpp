@@ -9,9 +9,10 @@
 bool canSim = false;
 
 void genCells(){
+	/*
 	for(int i = 0; i < map.size; i++){
 		for(int j = 0; j < map.size; j++){
-			if(( (float)rand() / (float)RAND_MAX )  > .5){
+			if(( (float)rand() / (float)RAND_MAX )  > .2){
 				map.cells[i][j].oldState = 1;
 			}
 			else{
@@ -19,6 +20,27 @@ void genCells(){
 			}
 		}
 	}
+	*/
+	map.cells[10][10].newState = 1;
+	map.cells[10][9].newState = 1;
+	map.cells[10][8].newState = 1;
+	map.cells[9][8].newState = 1;
+	map.cells[8][9].newState = 1;
+	map.cells[20][20].newState = 1;
+	map.cells[20][19].newState = 1;
+	map.cells[20][18].newState = 1;
+	map.cells[19][18].newState = 1;
+	map.cells[18][19].newState = 1;
+	map.cells[30][30].newState = 1;
+	map.cells[30][29].newState = 1;
+	map.cells[30][28].newState = 1;
+	map.cells[29][28].newState = 1;
+	map.cells[28][29].newState = 1;
+	map.cells[5][5].newState = 1;
+	map.cells[5][4].newState = 1;
+	map.cells[5][3].newState = 1;
+	map.cells[4][3].newState = 1;
+	map.cells[3][4].newState = 1;
 }
 
 void simulate2D(){
