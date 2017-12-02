@@ -18,29 +18,7 @@ Torus::Torus() {
 }
 
 void Torus::draw() {
-	/*
 
-	for (int v = 0; v < grid_size; v++) {
-		glColor3f(1.0,1.0,0.0);
-		glBegin(GL_LINE_LOOP);
-		for (int u = 0; u < grid_size; u++) {
-			x = (C + A*(float)cos(v*(2*M_PI/grid_size)))*(float)cos(u*(2*M_PI/grid_size));
-			y = (C + A*(float)cos(v*(2*M_PI/grid_size)))*(float)sin(u*(2*M_PI/grid_size));
-			z = A*(float)sin(v*(2*M_PI/grid_size));
-			glVertex3d(x,y,z);
-		}
-		glEnd();
-		glBegin(GL_LINE_LOOP);
-		for (int u = 0; u < grid_size; u++) {
-			x = (C + A*(float)cos(u*(2*M_PI/grid_size)))*(float)cos(v*(2*M_PI/grid_size));
-			y = (C + A*(float)cos(u*(2*M_PI/grid_size)))*(float)sin(v*(2*M_PI/grid_size));
-			z = A*(float)sin(u*(2*M_PI/grid_size));
-			glVertex3d(x,y,z);
-		}
-		glEnd();
-	}
-
-	*/
 	glPushMatrix();
 	this->ctm_multiply();
 	int x = 0;
@@ -133,6 +111,36 @@ void Torus::reset() {
 	y = 0;
 	z = 0;
 	grid_size = 30;
+}
+
+void Torus::calcNormals(){
+	//find two vectors on the surface and find their cross product this gives a normal vector
+	int i = 0;
+	for(i = 0; i < 36*36; i++){
+			// get two vectors
+		double x1 = faces[(i * 4)].x;
+		double y1 = faces[(i * 4)].y;
+		double z1 = faces[(i * 4)].z;
+		double x2 = faces[(i * 4) + 1].x;
+		double y2 = faces[(i * 4) + 1].y;
+		double z2 = faces[(i * 4) + 1].z;
+
+		double x3 = faces[(i * 4) + 3].x;
+		double y3 = faces[(i * 4) + 3].y;
+		double z3 = faces[(i * 4) + 3].z;
+		Vertex vector1;
+		vector1.x = x2 - x1;
+		vector1.y = y2 - y1;
+		vector1.z = z2 - z1;
+
+		Vertex vector2;
+		vector2.x = x3 - x1;
+		vector2.y = y3 - y1;
+		vector2.z = z3 - z1;
+		normals[i].x = (vector1.y * vector2.z) - (vector2.y * vector1.z);
+		normals[i].y = (vector1.z * vector2.x) - (vector2.z * vector1.x);
+		normals[i].z = (vector1.x * vector2.y) - (vector2.x * vector1.y);
+	}
 }
 
 

@@ -31,6 +31,8 @@ private:
 	void genVertices();
 	void drawSolid();
 	void drawGrid();
+	void calcNormals();
+	Vertex normals[36 * 36];
 };
 
 #endif /* TORUS_HPP_ */
