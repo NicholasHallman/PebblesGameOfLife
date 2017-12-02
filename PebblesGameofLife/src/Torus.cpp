@@ -28,13 +28,21 @@ void Torus::draw() {
 			glColor3f(.0,.3,.8);
 		} else{
 			glColor3f(.3,.3,.3);
+			GLfloat shine[] = {0.5,0.5,0.5,1};
+			GLfloat specularLight[] = { 1.0f, 1.0f, 1.0f, .3f };
+			glMaterialfv(GL_FRONT, GL_SHININESS, shine);
+			glMaterialfv(GL_FRONT, GL_SPECULAR, specularLight);
+
 		}
 		glBegin(GL_QUADS);
+			glNormal3d(normals[i].x, normals[i].y, normals[i].z);
 			glVertex3f(faces[i][3].x,faces[i][3].y,faces[i][3].z);
 			glVertex3f(faces[i][2].x,faces[i][2].y,faces[i][2].z);
 			glVertex3f(faces[i][1].x,faces[i][1].y,faces[i][1].z);
 			glVertex3f(faces[i][0].x,faces[i][0].y,faces[i][0].z);
+
 		glEnd();
+
 		glColor3f(.5,.5,.5);
 		glLineWidth(3);
 		glBegin(GL_LINE_STRIP);
@@ -43,6 +51,7 @@ void Torus::draw() {
 			glVertex3f(faces[i][2].x * 1.0005,faces[i][2].y * 1.0005,faces[i][2].z * 1.0005);
 			glVertex3f(faces[i][3].x * 1.0005,faces[i][3].y * 1.0005,faces[i][3].z * 1.0005);
 		glEnd();
+
 		x++;
 		if(x > 35){
 			x = 0;
