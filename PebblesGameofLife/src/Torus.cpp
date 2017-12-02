@@ -56,6 +56,7 @@ void Torus::draw() {
 			glVertex3f(faces[i][1].x,faces[i][1].y,faces[i][1].z);
 			glVertex3f(faces[i][2].x,faces[i][2].y,faces[i][2].z);
 			glVertex3f(faces[i][3].x,faces[i][3].y,faces[i][3].z);
+			glNormal3d(normals[i].x, normals[i].y, normals[i].z);
 		glEnd();
 		/*
 		glColor3f(1,1,1);
@@ -124,6 +125,7 @@ void Torus::genVertices() {
 			}
 		}
 	}
+	calcNormals();
 }
 
 void Torus::reset() {
@@ -140,16 +142,17 @@ void Torus::calcNormals(){
 	int i = 0;
 	for(i = 0; i < 36*36; i++){
 			// get two vectors
-		double x1 = faces[(i * 4)].x;
-		double y1 = faces[(i * 4)].y;
-		double z1 = faces[(i * 4)].z;
-		double x2 = faces[(i * 4) + 1].x;
-		double y2 = faces[(i * 4) + 1].y;
-		double z2 = faces[(i * 4) + 1].z;
+		double x1 = faces[i][0].x;
+		double y1 = faces[i][0].y;
+		double z1 = faces[i][0].z;
 
-		double x3 = faces[(i * 4) + 3].x;
-		double y3 = faces[(i * 4) + 3].y;
-		double z3 = faces[(i * 4) + 3].z;
+		double x2 = faces[i][1].x;
+		double y2 = faces[i][1].y;
+		double z2 = faces[i][1].z;
+
+		double x3 = faces[i][3].x;
+		double y3 = faces[i][3].y;
+		double z3 = faces[i][3].z;
 		Vertex vector1;
 		vector1.x = x2 - x1;
 		vector1.y = y2 - y1;
