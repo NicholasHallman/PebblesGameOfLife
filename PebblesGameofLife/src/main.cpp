@@ -31,7 +31,9 @@ void init2D(void) {
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0.0, widthG,0.0, heightG);
 
-	//Default grid
+}
+
+void initCells(){
 	map.size = 20;
 	map.cells = (cell **)malloc(map.size*sizeof(cell *));
 	for(int i = 0;i < map.size; ++i)
@@ -39,6 +41,9 @@ void init2D(void) {
 }
 
 void init3D(void) {
+
+	glLoadIdentity();
+	glViewport(0,0,widthG,heightG);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -111,6 +116,8 @@ int main(int argv, char* argc[]) {
 	glutEnterGameMode();
 	*/
 	init2D();
+	initCells();
+
 	initButton();
 	timer(1);
 

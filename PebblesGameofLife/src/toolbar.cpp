@@ -1,5 +1,12 @@
 #include"toolbar.h"
 
+void clearButtons(){
+	for(int i = 0; i < 20; i++){
+		Button temp;
+		buttons[i] = temp;
+	}
+}
+
 void toolbar(){
 
 	glColor3f(.3,.35,.4);
@@ -132,6 +139,18 @@ void toolbar(){
 		}
 	}
 	introVisit = true;
+}
+
+void toolbar3D(){
+	clearButtons();
+	gluOrtho2D(0.0, 1366,0.0, 768);
+	glColor3f(.3,.35,.4);
+	glBegin(GL_QUADS);
+		glVertex2f(0,768);
+		glVertex2f(1366,768);
+		glVertex2f(1366,730);
+		glVertex2f(0,730);
+	glEnd();
 }
 
 void update_grid() {

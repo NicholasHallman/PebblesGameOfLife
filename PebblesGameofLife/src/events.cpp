@@ -55,7 +55,7 @@ void mouseClicked(int button, int state, int x, int y){
 	if(pState == 2 && leftC && y < 730 && !colorW){
 		int relX = floor(x - ( floor(1366 - (CSIZE * map.size))/2) - map.x) / CSIZE;
 		int relY = floor(y - ( floor((768  - (CSIZE * map.size))/2) - 18) - map.y) / CSIZE;
-		if(relX >= 0 && relX < 200 && relY >= 0 && relY < 200){
+		if(relX >= 0 && relX < map.size && relY >= 0 && relY < map.size){
 			if(map.cells[relX][relY].newState == 1){
 				map.cells[relX][relY].newState = 0;
 			} else{
