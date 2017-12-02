@@ -31,8 +31,13 @@ void init2D(void) {
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0.0, widthG,0.0, heightG);
+	glMatrixMode(GL_MODELVIEW);
+	glDepthMask(GL_FALSE);
+	glDisable(GL_DEPTH_TEST);
 
-	//Default grid
+}
+
+void initCells(){
 	map.size = 20;
 	map.cells = (cell **)calloc(map.size,sizeof(cell *));
 	for(int i = 0;i < map.size; ++i)
@@ -40,11 +45,13 @@ void init2D(void) {
 }
 
 void init3D(void) {
+
+	glLoadIdentity();
+	glViewport(0,0,widthG,heightG);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	myCamera.setProjectionMatrix();
-	pState = 5;
 }
 
 void renderer(){
@@ -82,6 +89,7 @@ void renderer(){
 		myCamera.setProjectionMatrix();
 		glColor3f(.4,.4,.4);
 		myWorld.draw_world();
+		toolbar3D();
 		glFlush();
 		//Doughnut Simulation;
 		break;
@@ -112,6 +120,8 @@ int main(int argv, char* argc[]) {
 	glutEnterGameMode();
 	*/
 	init2D();
+	initCells();
+
 	initButton();
 	timer(1);
 
