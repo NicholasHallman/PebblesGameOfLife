@@ -42,6 +42,7 @@ void Torus::draw() {
 
 	*/
 	glPushMatrix();
+	this->ctm_multiply();
 	int x = 0;
 	int y = 0;
 	for(int i = 0; i < grid_size * grid_size; i++){

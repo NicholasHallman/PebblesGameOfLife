@@ -120,6 +120,9 @@ int buttonOver(int x, int y){
 }
 
 void timer(int x){
+	GLfloat rx;
+	GLfloat ry;
+	GLfloat rz;
 	runs ++;
 	map.x += speedX;
 	map.y += speedY;
@@ -127,6 +130,14 @@ void timer(int x){
 		runs = 0;
 		simulate2D();
 	}
+
+	rx = myWorld.list[0]->getMC().matrix[0][0];
+	ry = myWorld.list[0]->getMC().matrix[1][0];
+	rz = myWorld.list[0]->getMC().matrix[2][0];
+	myWorld.list[0]->rotate_mc(rx,ry,rz,0.5);
+	rx = myWorld.list[0]->getMC().matrix[0][1];
+	ry = myWorld.list[0]->getMC().matrix[1][1];
+	rz = myWorld.list[0]->getMC().matrix[2][1];
 
 	if (x)
 	glutPostRedisplay();
