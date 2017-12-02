@@ -12,6 +12,7 @@
 
 
 void toolbar();
+void toolbar3D();
 void but1(void);
 void but2(void);
 void but3(void);

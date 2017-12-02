@@ -142,8 +142,7 @@ void toolbar(){
 }
 
 void toolbar3D(){
-	clearButtons();
-	gluOrtho2D(0.0, 1366,0.0, 768);
+	init2D();
 	glColor3f(.3,.35,.4);
 	glBegin(GL_QUADS);
 		glVertex2f(0,768);
@@ -235,6 +234,7 @@ void b3D(){
 	update_grid();
 	genCells();
 	init3D();
+	pState = 5;
 	canSim = true;
 }
 

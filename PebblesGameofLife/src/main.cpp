@@ -30,14 +30,17 @@ void init2D(void) {
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0.0, widthG,0.0, heightG);
+	glMatrixMode(GL_MODELVIEW);
+	glDepthMask(GL_FALSE);
+	glDisable(GL_DEPTH_TEST);
 
 }
 
 void initCells(){
 	map.size = 20;
-	map.cells = (cell **)malloc(map.size*sizeof(cell *));
+	map.cells = (cell **)calloc(map.size,sizeof(cell *));
 	for(int i = 0;i < map.size; ++i)
-	  	map.cells[i] = (cell *)malloc(map.size*sizeof(cell));
+	  	map.cells[i] = (cell *)calloc(map.size,sizeof(cell));
 }
 
 void init3D(void) {
@@ -48,7 +51,6 @@ void init3D(void) {
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	myCamera.setProjectionMatrix();
-	pState = 5;
 }
 
 void renderer(){
@@ -86,6 +88,7 @@ void renderer(){
 		myCamera.setProjectionMatrix();
 		glColor3f(.4,.4,.4);
 		myWorld.draw_world();
+		toolbar3D();
 		glFlush();
 		//Doughnut Simulation;
 		break;
