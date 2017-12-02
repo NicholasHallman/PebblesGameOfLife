@@ -70,7 +70,7 @@ void simulate2D(){
 	}
 	glutPostRedisplay();
 }
-
+/*
 void simulate3D(){
 	for(int x = 0; x < map.size; x++){
 		for(int y = 0; y < map.size; y++){
@@ -96,5 +96,5 @@ int checkNeighbors3D(int x, int y, int z){
 	}
 	return neighbors;
 }
-
+*/
 

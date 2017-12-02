@@ -40,6 +40,7 @@ void init2D(void) {
 
 void init3D(void) {
 	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	myCamera.setProjectionMatrix();
 	pState = 5;
@@ -121,28 +122,3 @@ int main(int argv, char* argc[]) {
 	glutMainLoop();
 }
 
-
-int gothrough(){
-	for(int x = 0; x < map.size; x++){
-		for(int y = 0; y < map.size; y++){
-			for(int z = 0; z < map.size; map++){
-				checkNeightbors(x,y,z);
-			}
-		}
-	}
-}
-
-int checkNeighbors(int x, int y, int z){
-	int neighbors = 0;
-	for(int i = x - 1; i <= x + 1; i++){
-		for(int j = y - 1; j <= j + 1; j ++){
-			for(int k = z - 1; z <= k + 1; k++){
-				if(i != x && j != y && k != z){
-					neighbors += map.cells[(i + map.size) % map.size][(j + map.size) % map.size][(k + map.size) % map.size];
-				}
-
-			}
-		}
-	}
-	return neighbors;
-}

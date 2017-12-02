@@ -6,7 +6,7 @@
  */
 
 
-#include "World.hpp"
+#include "main.hpp"
 
 World::World() {
 	list[0] = new Torus();

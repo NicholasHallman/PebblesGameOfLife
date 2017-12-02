@@ -56,6 +56,7 @@ void Torus::draw() {
 			glVertex3f(faces[i][2].x,faces[i][2].y,faces[i][2].z);
 			glVertex3f(faces[i][3].x,faces[i][3].y,faces[i][3].z);
 		glEnd();
+		/*
 		glColor3f(1,1,1);
 		glBegin(GL_LINE_STRIP);
 			glVertex3f(faces[i][0].x,faces[i][0].y,faces[i][0].z);
@@ -63,6 +64,7 @@ void Torus::draw() {
 			glVertex3f(faces[i][2].x,faces[i][2].y,faces[i][2].z);
 			glVertex3f(faces[i][3].x,faces[i][3].y,faces[i][3].z);
 		glEnd();
+		*/
 		x++;
 		if(x > 35){
 			x = 0;

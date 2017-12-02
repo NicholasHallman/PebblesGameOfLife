@@ -11,8 +11,8 @@
 #include <GL/glut.h>
 #include "Shape.hpp"
 #include "Vertex.hpp"
+#include"global.hpp"
 #include<stdio.h>
-#include "main.hpp"
 
 class Torus: public Shape {
 protected:
