@@ -14,7 +14,6 @@ Torus::Torus() {
 	y = 0;
 	z = 0;
 	grid_size = 36;
-	Vertex faces[grid_size * grid_size][4];
 	genVertices();
 }
 
@@ -46,21 +45,19 @@ void Torus::draw() {
 	int x = 0;
 	int y = 0;
 	for(int i = 0; i < grid_size * grid_size; i++){
-
+		if(map.cells[x][y].newState == 1){
+			glColor3f(.0,.3,.8);
+		} else{
+			glColor3f(.3,.3,.3);
+		}
 		glBegin(GL_QUADS);
-			if(map.cells[x][y].newState){
-				glColor3f(.0,.3,.8);
-			} else{
-				glColor3f(.3,.3,.3);
-			}
 			glVertex3f(faces[i][0].x,faces[i][0].y,faces[i][0].z);
 			glVertex3f(faces[i][1].x,faces[i][1].y,faces[i][1].z);
 			glVertex3f(faces[i][2].x,faces[i][2].y,faces[i][2].z);
 			glVertex3f(faces[i][3].x,faces[i][3].y,faces[i][3].z);
 		glEnd();
-
+		glColor3f(1,1,1);
 		glBegin(GL_LINE_STRIP);
-			glColor3f(1,1,1);
 			glVertex3f(faces[i][0].x,faces[i][0].y,faces[i][0].z);
 			glVertex3f(faces[i][1].x,faces[i][1].y,faces[i][1].z);
 			glVertex3f(faces[i][2].x,faces[i][2].y,faces[i][2].z);
@@ -71,6 +68,7 @@ void Torus::draw() {
 			x = 0;
 			y++;
 		}
+		map.cells[x][y].oldState = map.cells[x][y].newState;
 	}
 
 	glPopMatrix();
