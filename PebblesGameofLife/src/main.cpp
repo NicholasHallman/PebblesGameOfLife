@@ -32,8 +32,8 @@ void init2D(void) {
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0.0, widthG,0.0, heightG);
 	glMatrixMode(GL_MODELVIEW);
-	glDepthMask(GL_FALSE);
-	glDisable(GL_DEPTH_TEST);
+	//glDepthMask(GL_FALSE);
+	//glDisable(GL_DEPTH_TEST);
 
 }
 
@@ -68,6 +68,9 @@ void init3D(void) {
 
 	glLoadIdentity();
 	glViewport(0,0,widthG,heightG);
+	glEnable(GL_CULL_FACE);
+	//glDepthMask(GL_TRUE);
+	glEnable(GL_DEPTH_TEST);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	myCamera.setProjectionMatrix();
 }

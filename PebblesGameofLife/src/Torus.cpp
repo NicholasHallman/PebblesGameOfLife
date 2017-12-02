@@ -18,29 +18,7 @@ Torus::Torus() {
 }
 
 void Torus::draw() {
-	/*
 
-	for (int v = 0; v < grid_size; v++) {
-		glColor3f(1.0,1.0,0.0);
-		glBegin(GL_LINE_LOOP);
-		for (int u = 0; u < grid_size; u++) {
-			x = (C + A*(float)cos(v*(2*M_PI/grid_size)))*(float)cos(u*(2*M_PI/grid_size));
-			y = (C + A*(float)cos(v*(2*M_PI/grid_size)))*(float)sin(u*(2*M_PI/grid_size));
-			z = A*(float)sin(v*(2*M_PI/grid_size));
-			glVertex3d(x,y,z);
-		}
-		glEnd();
-		glBegin(GL_LINE_LOOP);
-		for (int u = 0; u < grid_size; u++) {
-			x = (C + A*(float)cos(u*(2*M_PI/grid_size)))*(float)cos(v*(2*M_PI/grid_size));
-			y = (C + A*(float)cos(u*(2*M_PI/grid_size)))*(float)sin(v*(2*M_PI/grid_size));
-			z = A*(float)sin(u*(2*M_PI/grid_size));
-			glVertex3d(x,y,z);
-		}
-		glEnd();
-	}
-
-	*/
 	glPushMatrix();
 	this->ctm_multiply();
 	int x = 0;
@@ -52,21 +30,19 @@ void Torus::draw() {
 			glColor3f(.3,.3,.3);
 		}
 		glBegin(GL_QUADS);
-			glVertex3f(faces[i][0].x,faces[i][0].y,faces[i][0].z);
-			glVertex3f(faces[i][1].x,faces[i][1].y,faces[i][1].z);
-			glVertex3f(faces[i][2].x,faces[i][2].y,faces[i][2].z);
 			glVertex3f(faces[i][3].x,faces[i][3].y,faces[i][3].z);
-			glNormal3d(normals[i].x, normals[i].y, normals[i].z);
+			glVertex3f(faces[i][2].x,faces[i][2].y,faces[i][2].z);
+			glVertex3f(faces[i][1].x,faces[i][1].y,faces[i][1].z);
+			glVertex3f(faces[i][0].x,faces[i][0].y,faces[i][0].z);
 		glEnd();
-		/*
-		glColor3f(1,1,1);
+		glColor3f(.5,.5,.5);
+		glLineWidth(3);
 		glBegin(GL_LINE_STRIP);
-			glVertex3f(faces[i][0].x,faces[i][0].y,faces[i][0].z);
-			glVertex3f(faces[i][1].x,faces[i][1].y,faces[i][1].z);
-			glVertex3f(faces[i][2].x,faces[i][2].y,faces[i][2].z);
-			glVertex3f(faces[i][3].x,faces[i][3].y,faces[i][3].z);
+			glVertex3f(faces[i][0].x * 1.0005,faces[i][0].y * 1.0005,faces[i][0].z * 1.0005);
+			glVertex3f(faces[i][1].x * 1.0005,faces[i][1].y * 1.0005,faces[i][1].z * 1.0005);
+			glVertex3f(faces[i][2].x * 1.0005,faces[i][2].y * 1.0005,faces[i][2].z * 1.0005);
+			glVertex3f(faces[i][3].x * 1.0005,faces[i][3].y * 1.0005,faces[i][3].z * 1.0005);
 		glEnd();
-		*/
 		x++;
 		if(x > 35){
 			x = 0;
@@ -115,6 +91,7 @@ void Torus::genVertices() {
 				faces[pos][3].x = (C + A * (float) cos(pointv * (2 * M_PI / grid_size))) * (float) cos(pointu * (2 * M_PI / grid_size));
 				faces[pos][3].y = (C + A*(float)cos(pointv*(2*M_PI/grid_size)))*(float)sin(pointu*(2*M_PI/grid_size));
 				faces[pos][3].z = A*(float)sin(pointv*(2*M_PI/grid_size));
+
 				Vertex temp1 = faces[pos][0];
 				Vertex temp2 = faces[pos][3];
 				faces[pos][0] = faces[pos][2];
