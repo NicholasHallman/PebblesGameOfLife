@@ -142,7 +142,6 @@ void toolbar(){
 }
 
 void toolbar3D(){
-	init2D();
 	glColor3f(.3,.35,.4);
 	glBegin(GL_QUADS);
 		glVertex2f(0,768);
@@ -150,6 +149,11 @@ void toolbar3D(){
 		glVertex2f(1366,730);
 		glVertex2f(0,730);
 	glEnd();
+
+	glColor3f(1,1,1); //sets text color to white
+	const unsigned char* t = reinterpret_cast<const unsigned char *>("Pebble's Game of Life");
+	glRasterPos2i(10, 740); // positions the text
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, t); //prints the text to the screen
 }
 
 void update_grid() {
@@ -233,7 +237,6 @@ void b3D(){
 	map.size = 36;
 	update_grid();
 	genCells();
-	init3D();
 	pState = 5;
 	canSim = true;
 }

@@ -56,11 +56,12 @@ void Camera::translate(GLfloat tx, GLfloat ty, GLfloat tz){ //w.r.p.t WC
 }
 
 void Camera::setProjectionMatrix() {
+	glEnable(GL_CULL_FACE);
+	glLoadIdentity();
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(viewAngle, aspect, nearDist, farDist);
 	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
 	gluLookAt(eye.x, eye.y, eye.z, reference.x, reference.y, reference.z,
 			viewup.x,viewup.y,viewup.z);
 	return;

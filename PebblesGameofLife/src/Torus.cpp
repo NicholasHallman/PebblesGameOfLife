@@ -25,9 +25,9 @@ void Torus::draw() {
 	int y = 0;
 	for(int i = 0; i < grid_size * grid_size; i++){
 		if(map.cells[x][y].newState == 1){
-			glColor3f(.0,.3,.8);
+			glColor3f(.0,.6,.8);
 		} else{
-			glColor3f(.3,.3,.3);
+			glColor3f(.0,.1,.2);
 			GLfloat shine[] = {0.5,0.5,0.5,1};
 			GLfloat specularLight[] = { 1.0f, 1.0f, 1.0f, .3f };
 			glMaterialfv(GL_FRONT, GL_SHININESS, shine);
@@ -43,7 +43,7 @@ void Torus::draw() {
 
 		glEnd();
 
-		glColor3f(.5,.5,.5);
+		glColor3f(.5,.1,.5);
 		glLineWidth(3);
 		glBegin(GL_LINE_STRIP);
 			glVertex3f(faces[i][0].x * 1.0005,faces[i][0].y * 1.0005,faces[i][0].z * 1.0005);

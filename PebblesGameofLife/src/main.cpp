@@ -26,15 +26,24 @@ World myWorld;
 Camera myCamera;
 
 void init2D(void) {
-	glLoadIdentity();
-	glViewport(0,0,widthG,heightG);
-	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glMatrixMode(GL_PROJECTION);
-	gluOrtho2D(0.0, widthG,0.0, heightG);
+	//glPushMatrix();
+	glLoadIdentity();
+	gluOrtho2D(0.0,1366.0,0.0,768.0);
 	glMatrixMode(GL_MODELVIEW);
-	//glDepthMask(GL_FALSE);
-	//glDisable(GL_DEPTH_TEST);
+	glLoadIdentity();
+	glDisable(GL_CULL_FACE);
+	glDisable(GL_DEPTH_TEST);
+	glClear(GL_DEPTH_BUFFER_BIT);
 
+
+	/*
+	glLoadIdentity();
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glMatrixMode(GL_PROJECTION);
+	gluOrtho2D(0.0,1366.0,0.0,768.0);
+	glMatrixMode(GL_MODELVIEW);
+	*/
 }
 
 void initCells(){
@@ -44,16 +53,15 @@ void initCells(){
 	  	map.cells[i] = (cell *)calloc(map.size,sizeof(cell));
 }
 
-void init3D(void) {
-
+void initLighting(void) {
 
 	glShadeModel(GL_SMOOTH);
 
 
 	// Create light components
-	GLfloat ambientLight[] = { 0.5f, 0.5f, 0.5f, 1.0f };
+	GLfloat ambientLight[] = { 0.5f, 0.6f, 0.7f, 1.0f };
 	GLfloat diffuseLight[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	GLfloat position[] = { 1.0f, 1.0f, 0.0f, 0.0f };
+	GLfloat position[] = { -1.0f, -1.0f, 0.0f, 0.0f };
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
@@ -64,18 +72,6 @@ void init3D(void) {
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
 	//glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
 	glLightfv(GL_LIGHT0, GL_POSITION, position);
-
-	glCullFace(GL_BACK);
-	glEnable(GL_CULL_FACE);
-	glEnable(GL_DEPTH_TEST);
-
-	glLoadIdentity();
-	glViewport(0,0,widthG,heightG);
-	glEnable(GL_CULL_FACE);
-	//glDepthMask(GL_TRUE);
-	glEnable(GL_DEPTH_TEST);
-	glClearColor(0.0, 0.0, 0.0, 1.0);
-	myCamera.setProjectionMatrix();
 }
 
 void renderer(){
@@ -109,13 +105,20 @@ void renderer(){
 		//User inputs seed for generation, selects shape;
 		break;
 	case 5:
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glEnable(GL_DEPTH_TEST);
+
 		myCamera.setProjectionMatrix();
-		glColor3f(.4,.4,.4);
+		initLighting();
 		myWorld.draw_world();
-		toolbar3D();
-		glFlush();
+
+		init2D();
+		toolbar();
+		glMatrixMode(GL_PROJECTION);
+		//glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
 		//Doughnut Simulation;
+
 		break;
 	case 6:
 		//Volumetric Cube Simulation;
