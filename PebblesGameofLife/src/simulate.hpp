@@ -11,7 +11,10 @@
 #include"main.hpp"
 
 void simulate2D();
+void simulate3D();
 void genCells();
+void gen3DCells();
+int checkNeighbor(int , int, int);
 
 extern bool canSim;
 

@@ -18,17 +18,20 @@ class Torus: public Shape {
 protected:
 	GLfloat C;
 	GLfloat A;
+	GLfloat B;
 	GLdouble x;
 	GLdouble y;
 	GLdouble z;
 	int grid_size;
 public:
+	Vertex lineV[36 * 36][4];
 	Vertex faces[36 * 36][4];
 	Torus();
 	void draw();
 	void reset();
 private:
 	void genVertices();
+	void genLines();
 	void drawSolid();
 	void drawGrid();
 	void calcNormals();

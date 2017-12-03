@@ -129,7 +129,19 @@ void renderer(){
 
 		break;
 	case 6:
-		//Volumetric Cube Simulation;
+		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glEnable(GL_DEPTH_TEST);
+
+		myCamera.setProjectionMatrix();
+		initLighting();
+		myWorld.draw_world(pState);
+
+		init2D();
+		toolbar3D();
+		glMatrixMode(GL_PROJECTION);
+		//glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+		//Doughnut Simulation;
 		break;
 	}
 

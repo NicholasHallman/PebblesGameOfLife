@@ -13,8 +13,10 @@ Torus::Torus() {
 	x = 0;
 	y = 0;
 	z = 0;
+	B = 1.5;
 	grid_size = 36;
 	genVertices();
+	genLines();
 }
 
 void Torus::draw() {
@@ -46,10 +48,10 @@ void Torus::draw() {
 		glColor3f(.5,.1,.5);
 		glLineWidth(3);
 		glBegin(GL_LINE_STRIP);
-			glVertex3f(faces[i][0].x * 1.0005,faces[i][0].y * 1.0005,faces[i][0].z * 1.0005);
-			glVertex3f(faces[i][1].x * 1.0005,faces[i][1].y * 1.0005,faces[i][1].z * 1.0005);
-			glVertex3f(faces[i][2].x * 1.0005,faces[i][2].y * 1.0005,faces[i][2].z * 1.0005);
-			glVertex3f(faces[i][3].x * 1.0005,faces[i][3].y * 1.0005,faces[i][3].z * 1.0005);
+			glVertex3f(lineV[i][0].x ,lineV[i][0].y ,lineV[i][0].z );
+			glVertex3f(lineV[i][1].x ,lineV[i][1].y ,lineV[i][1].z );
+			glVertex3f(lineV[i][2].x ,lineV[i][2].y ,lineV[i][2].z );
+			glVertex3f(lineV[i][3].x ,lineV[i][3].y ,lineV[i][3].z );
 		glEnd();
 
 		x++;
@@ -64,6 +66,7 @@ void Torus::draw() {
 }
 
 void Torus::genVertices() {
+	A = 1;
 	int pos = 0;
 	for (int v = 0; v < grid_size; v++) {
 		for (int u = 0; u < grid_size; u++) {
@@ -107,11 +110,64 @@ void Torus::genVertices() {
 				faces[pos][3] = temp1;
 				faces[pos][2] = faces[pos][1];
 				faces[pos][1] = temp2;
+
 				pos ++;
 			}
 		}
 	}
 	calcNormals();
+}
+
+void Torus::genLines() {
+	A = 1.001;
+	int pos = 0;
+	for (int v = 0; v < grid_size; v++) {
+		for (int u = 0; u < grid_size; u++) {
+			if(u != grid_size){
+				int pointu = u;
+				int pointv = v;
+				lineV[pos][0].x = (C + A * (float) cos(pointv * (2 * M_PI / grid_size))) * (float) cos(pointu * (2 * M_PI / grid_size));
+				lineV[pos][0].y = (C + A*(float)cos(pointv*(2*M_PI/grid_size)))*(float)sin(pointu*(2*M_PI/grid_size));
+				lineV[pos][0].z = A*(float)sin(pointv*(2*M_PI/grid_size));
+				pointu = u + 1;
+				if(pointu == grid_size){
+					pointu = 0;
+				}
+				pointv = v;
+				lineV[pos][1].x = (C + A * (float) cos(pointv * (2 * M_PI / grid_size))) * (float) cos(pointu * (2 * M_PI / grid_size));
+				lineV[pos][1].y = (C + A*(float)cos(pointv*(2*M_PI/grid_size)))*(float)sin(pointu*(2*M_PI/grid_size));
+				lineV[pos][1].z = A*(float)sin(pointv*(2*M_PI/grid_size));
+				pointu = u;
+				pointv = v + 1;
+				if(pointv == grid_size){
+					pointv = 0;
+				}
+				lineV[pos][2].x = (C + A * (float) cos(pointv * (2 * M_PI / grid_size))) * (float) cos(pointu * (2 * M_PI / grid_size));
+				lineV[pos][2].y = (C + A*(float)cos(pointv*(2*M_PI/grid_size)))*(float)sin(pointu*(2*M_PI/grid_size));
+				lineV[pos][2].z = A*(float)sin(pointv*(2*M_PI/grid_size));
+				pointu = u + 1;
+				if(pointu == grid_size){
+					pointu = 0;
+				}
+				pointv = v + 1;
+				if(pointv == grid_size){
+					pointv = 0;
+				}
+				lineV[pos][3].x = (C + A * (float) cos(pointv * (2 * M_PI / grid_size))) * (float) cos(pointu * (2 * M_PI / grid_size));
+				lineV[pos][3].y = (C + A*(float)cos(pointv*(2*M_PI/grid_size)))*(float)sin(pointu*(2*M_PI/grid_size));
+				lineV[pos][3].z = A*(float)sin(pointv*(2*M_PI/grid_size));
+
+				Vertex temp1 = lineV[pos][0];
+				Vertex temp2 = lineV[pos][3];
+				lineV[pos][0] = lineV[pos][2];
+				lineV[pos][3] = temp1;
+				lineV[pos][2] = lineV[pos][1];
+				lineV[pos][1] = temp2;
+
+				pos ++;
+			}
+		}
+	}
 }
 
 void Torus::reset() {

@@ -24,6 +24,7 @@ void bfull();
 void bcolor();
 void breset(void);
 void b3D();
+void b2D();
 void btorDraw();
 void btorView();
 

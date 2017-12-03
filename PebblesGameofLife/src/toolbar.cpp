@@ -169,6 +169,7 @@ void toolbar3D(){
 		torusV.active = true;
 		buttons[0] = torusV; // add the button to the button draw array
 		buttons[0].id = 0;
+		buttons[0].broken = true;
 
 		Button torusD; // create a new button
 		torusD.Name(( const unsigned char*)"Torus Draw"); //name the button (acts as button text)
@@ -186,16 +187,22 @@ void toolbar3D(){
 		buttons[11] = quit;
 		buttons[11].id = 11;
 
-		Button three_dimension;
-		three_dimension.Name(( const unsigned char*)"2D Mode");
-		three_dimension.SetPosition(Vertex(1052,bh,0));
-		three_dimension.onClick(but1);
-		three_dimension.active = true;
-		buttons[12] = three_dimension;
+		Button two;
+		two.Name(( const unsigned char*)"2D Mode");
+		two.SetPosition(Vertex(1052,bh,0));
+		two.onClick(b2D);
+		two.active = true;
+		buttons[12] = two;
 		buttons[12].id = 12;
 		introVisit = false;
 
-		introVisit = false;
+		Button sre;
+		sre.Name(( const unsigned char*)"Clear");
+		sre.SetPosition(Vertex(torusD.position.x + torusD.rWidth + 10,bh,0));
+		sre.onClick(breset);
+		sre.active = true;
+		buttons[9] = sre;
+		buttons[9].id = 9;
 	}
 
 	for(int i = 0; i < 20; i++){
@@ -286,16 +293,33 @@ void bcolor(){
 }
 
 void b3D(){
-	map.size = 36;
+	//map.size = 36;
+	//update_grid();
+	myCamera.eye.x = 35;
+	myCamera.eye.y = 35;
+	myCamera.eye.z = 35;
+	gen3DCells();
 	introVisit = true;
-	update_grid();
-	genCells();
-	pState = 5;
+	pState = 6;
 	canSim = true;
-
 }
 
+void b2D(){
+	map.size = 20;
+	update_grid();
+
+	introVisit = true;
+	pState = 2;
+	canSim = false;
+}
+
+
+
 void btorDraw(){
+	if(map.size != 36){
+		map.size = 36;
+		update_grid();
+	}
 	canSim = false;
 	map.size = 36;
 	pState = 2;
@@ -303,6 +327,13 @@ void btorDraw(){
 }
 
 void btorView(){
+	if(map.size != 36){
+		map.size = 36;
+		update_grid();
+	}
+	myCamera.eye.x = 1;
+	myCamera.eye.y = 1;
+	myCamera.eye.z = 14;
 	canSim = true;
 	pState = 5;
 }

@@ -128,21 +128,26 @@ void timer(int x){
 	map.y += speedY;
 	if(runs == 10){
 		runs = 0;
-		simulate2D();
+		if(pState == 6){
+			simulate3D();
+		} else{
+			simulate2D();
+		}
 	}
-
-	rx = myWorld.torus[0]->getMC().matrix[0][0];
-	ry = myWorld.torus[0]->getMC().matrix[1][0];
-	rz = myWorld.torus[0]->getMC().matrix[2][0];
-	myWorld.torus[0]->rotate_mc(rx,ry,rz,0.3);
-	rx = myWorld.torus[0]->getMC().matrix[0][1];
-	ry = myWorld.torus[0]->getMC().matrix[1][1];
-	rz = myWorld.torus[0]->getMC().matrix[2][1];
-	myWorld.torus[0]->rotate_mc(rx,ry,rz,0.5);
-	rx = myWorld.torus[0]->getMC().matrix[0][2];
-	ry = myWorld.torus[0]->getMC().matrix[1][2];
-	rz = myWorld.torus[0]->getMC().matrix[2][2];
-	myWorld.torus[0]->rotate_mc(rx,ry,rz,0.);
+	if(pState == 5){
+		rx = myWorld.torus[0]->getMC().matrix[0][0];
+		ry = myWorld.torus[0]->getMC().matrix[1][0];
+		rz = myWorld.torus[0]->getMC().matrix[2][0];
+		myWorld.torus[0]->rotate_mc(rx,ry,rz,0.3);
+		rx = myWorld.torus[0]->getMC().matrix[0][1];
+		ry = myWorld.torus[0]->getMC().matrix[1][1];
+		rz = myWorld.torus[0]->getMC().matrix[2][1];
+		myWorld.torus[0]->rotate_mc(rx,ry,rz,0.5);
+		rx = myWorld.torus[0]->getMC().matrix[0][2];
+		ry = myWorld.torus[0]->getMC().matrix[1][2];
+		rz = myWorld.torus[0]->getMC().matrix[2][2];
+		myWorld.torus[0]->rotate_mc(rx,ry,rz,0.);
+	}
 
 
 	if (x)
