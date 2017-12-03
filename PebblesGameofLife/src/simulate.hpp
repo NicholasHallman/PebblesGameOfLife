@@ -15,5 +15,4 @@ void genCells();
 
 extern bool canSim;
 
-
 #endif /* SIMULATE_HPP_ */

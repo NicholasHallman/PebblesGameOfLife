@@ -22,7 +22,7 @@ void toolbar(){
 	glRasterPos2i(10, 740); // positions the text
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, t); //prints the text to the screen
 
-	if(!introVisit){
+	if(introVisit){
 		int bh = 735;
 		Button s20; // create a new button
 		s20.Name(( const unsigned char*)"20x20"); //name the button (acts as button text)
@@ -123,13 +123,13 @@ void toolbar(){
 		buttons[11].id = 11;
 
 		Button three_dimension;
-		three_dimension.Name(( const unsigned char*)"3-Dimension");
+		three_dimension.Name(( const unsigned char*)"3D Mode");
 		three_dimension.SetPosition(Vertex(sim.position.x + sim.rWidth + 10,bh,0));
 		three_dimension.onClick(b3D);
 		three_dimension.active = true;
 		buttons[12] = three_dimension;
 		buttons[12].id = 12;
-
+		introVisit = false;
 	}
 	for(int i = 0; i < 20; i++){
 		if(buttons[i].active){
@@ -138,12 +138,13 @@ void toolbar(){
 			buttons[i].DrawBroken();
 		}
 	}
-	introVisit = true;
+
 }
 
 void toolbar3D(){
 	//init2D();
 	glColor3f(.3,.35,.4);
+	//glDisable(GL_COLOR_MATERIAL);
 	glBegin(GL_QUADS);
 		glVertex2f(0,768);
 		glVertex2f(1366,768);
@@ -155,6 +156,56 @@ void toolbar3D(){
 	const unsigned char* t = reinterpret_cast<const unsigned char *>("Pebble's Game of Life");
 	glRasterPos2i(10, 740); // positions the text
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, t); //prints the text to the screen
+
+	if(introVisit){
+		printf("???\n");
+		clearButtons();
+
+		int bh = 735;
+		Button torusV; // create a new button
+		torusV.Name(( const unsigned char*)"Torus View"); //name the button (acts as button text)
+		torusV.SetPosition(Vertex(210,bh,0)); //set the buttons position
+		torusV.onClick(btorView); // set the function to activate when the button is pressed
+		torusV.active = true;
+		buttons[0] = torusV; // add the button to the button draw array
+		buttons[0].id = 0;
+
+		Button torusD; // create a new button
+		torusD.Name(( const unsigned char*)"Torus Draw"); //name the button (acts as button text)
+		torusD.SetPosition(Vertex(torusV.position.x + torusV.rWidth + 10,bh,0)); //set the buttons position
+		torusD.onClick(btorDraw); // set the function to activate when the button is pressed
+		torusD.active = true;
+		buttons[1] = torusD; // add the button to the button draw array
+		buttons[1].id = 1;
+
+		Button quit;
+		quit.Name(( const unsigned char*)"Exit Program");
+		quit.SetPosition(Vertex(1240,735,0));
+		quit.onClick(quitProgram);
+		quit.active = true;
+		buttons[11] = quit;
+		buttons[11].id = 11;
+
+		Button three_dimension;
+		three_dimension.Name(( const unsigned char*)"2D Mode");
+		three_dimension.SetPosition(Vertex(1052,bh,0));
+		three_dimension.onClick(but1);
+		three_dimension.active = true;
+		buttons[12] = three_dimension;
+		buttons[12].id = 12;
+		introVisit = false;
+
+		introVisit = false;
+	}
+
+	for(int i = 0; i < 20; i++){
+		if(buttons[i].active){
+			buttons[i].Draw();
+		} else if(buttons[i].broken) {
+			buttons[i].DrawBroken();
+		}
+	}
+
 }
 
 void update_grid() {
@@ -236,10 +287,24 @@ void bcolor(){
 
 void b3D(){
 	map.size = 36;
+	introVisit = true;
 	update_grid();
 	genCells();
 	pState = 5;
 	canSim = true;
+
+}
+
+void btorDraw(){
+	canSim = false;
+	map.size = 36;
+	pState = 2;
+
+}
+
+void btorView(){
+	canSim = true;
+	pState = 5;
 }
 
 void breset(){

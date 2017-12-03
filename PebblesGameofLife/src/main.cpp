@@ -18,7 +18,7 @@ bool colorW = false;
 float colors[3] = {1,0,0};
 
 Button buttons[20];
-bool introVisit = false;
+bool introVisit = true;
 cellMap map;
 cellMap3D map3D;
 World myWorld;
@@ -121,7 +121,7 @@ void renderer(){
 		myWorld.draw_world(pState);
 
 		init2D();
-		toolbar();
+		toolbar3D();
 		glMatrixMode(GL_PROJECTION);
 		//glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);

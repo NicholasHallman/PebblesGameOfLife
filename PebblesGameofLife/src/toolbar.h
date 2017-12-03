@@ -24,6 +24,8 @@ void bfull();
 void bcolor();
 void breset(void);
 void b3D();
+void btorDraw();
+void btorView();
 
 
 #endif /* TOOLBAR_H_ */
