@@ -20,6 +20,7 @@
 #include"Shape.hpp"
 #include"global.hpp"
 #include"Torus.hpp"
+#include"Cube.hpp"
 
 using namespace peb;
 

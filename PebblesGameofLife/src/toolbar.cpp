@@ -142,7 +142,7 @@ void toolbar(){
 }
 
 void toolbar3D(){
-	init2D();
+	//init2D();
 	glColor3f(.3,.35,.4);
 	glBegin(GL_QUADS);
 		glVertex2f(0,768);
