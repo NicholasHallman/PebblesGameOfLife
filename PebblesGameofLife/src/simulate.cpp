@@ -63,14 +63,7 @@ void simulate2D(){
 		for(int y = 0; y < map.size; y++){
 			for(int x = 0; x < map.size; x++){
 					//Calculate the number of live processes around the cell
-					neighbours = 	map.cells[(x - 1 + map.size) % map.size][y].oldState +
-							map.cells[(x - 1 + map.size) % map.size][(y - 1 + map.size) % map.size].oldState +
-							map.cells[(x - 1 + map.size) % map.size][(y + 1) % map.size].oldState +
-							map.cells[(x + 1) % map.size][y].oldState +
-							map.cells[(x + 1) % map.size][(y - 1 + map.size) % map.size].oldState +
-							map.cells[(x + 1) % map.size][(y + 1) % map.size].oldState +
-							map.cells[x][(y - 1 + map.size) % map.size].oldState +
-							map.cells[x][(y + 1) % map.size].oldState;
+					neighbours = checkNeighbor2D(x, y);
 					newstate = 0;
 					//Update the cell's newstate based on the neighbours
 					if(map.cells[x][y].oldState == 1 && (neighbours == 2 || neighbours == 3))
@@ -92,34 +85,7 @@ void simulate3D(){
 		for(int z = 0; z < map3D.size; z++){
 			for(int y = 0; y < map3D.size; y++){
 				for(int x = 0; x < map3D.size; x++){
-					neighbors = checkNeighbor(x,y,z);
-
-//							map3D.cells[(x - 1 + map3D.size) % map3D.size][y][z].oldState +
-//							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y - 1 + map3D.size) % map3D.size][z].oldState +
-//							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y + 1) % map3D.size][z].oldState +
-//							map3D.cells[(x + 1) % map3D.size][y][z].oldState +
-//							map3D.cells[(x + 1) % map3D.size][(y - 1 + map3D.size) % map3D.size][z].oldState +
-//							map3D.cells[(x + 1) % map3D.size][(y + 1) % map3D.size][z].oldState +
-//							map3D.cells[x][(y - 1 + map3D.size) % map3D.size][z].oldState +
-//							map3D.cells[x][(y + 1) % map3D.size][z].oldState +
-//							map3D.cells[x][y][(z + 1) % map3D.size].oldState +
-//							map3D.cells[x][y][(z - 1 + map3D.size) % map3D.size].oldState +
-//							map3D.cells[(x - 1 + map3D.size) % map3D.size][y][(z + 1) % map3D.size].oldState +
-//							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z + 1) % map3D.size].oldState +
-//							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y + 1) % map3D.size][(z + 1) % map3D.size].oldState +
-//							map3D.cells[(x + 1) % map3D.size][y][(z + 1) % map3D.size].oldState +
-//							map3D.cells[(x + 1) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z + 1) % map3D.size].oldState +
-//							map3D.cells[(x + 1) % map3D.size][(y + 1) % map3D.size][(z + 1) % map3D.size].oldState +
-//							map3D.cells[x][(y - 1 + map3D.size) % map3D.size][(z + 1) % map3D.size].oldState +
-//							map3D.cells[x][(y + 1) % map3D.size][(z + 1) % map3D.size].oldState +
-//							map3D.cells[(x - 1 + map3D.size) % map3D.size][y][(z - 1 + map3D.size) % map3D.size].oldState +
-//							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
-//							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y + 1) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
-//							map3D.cells[(x + 1) % map3D.size][y][(z - 1 + map3D.size) % map3D.size].oldState +
-//							map3D.cells[(x + 1) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
-//							map3D.cells[(x + 1) % map3D.size][(y + 1) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
-//							map3D.cells[x][(y - 1 + map3D.size) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
-//							map3D.cells[x][(y + 1) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState;
+					neighbors = checkNeighbor3D(x,y,z);
 					newstate = 0;
 					//Update the cell's newstate based on the neighbours
 					if(map3D.cells[x][y][z].oldState == 1 && (neighbors == 4 || neighbors == 5))
@@ -133,7 +99,16 @@ void simulate3D(){
 	}
 }
 
-int checkNeighbor(int x, int y, int z) {
+int checkNeighbor2D(int x, int y) {
+	int count = 0;
+	for(int i = x - 1; i <= x + 1; i++)
+		for(int j = y - 1; j <= y + 1; j++)
+			if (i != x || j != y)
+				count = count + map.cells[(i + map.size) % map.size][(j + map.size) % map.size].oldState;
+	return count;
+}
+
+int checkNeighbor3D(int x, int y, int z) {
 	int count = 0;
 	for(int i = x - 1; i <= x + 1; i++)
 		for(int j = y - 1; j <= y + 1; j++)

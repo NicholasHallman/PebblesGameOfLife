@@ -128,7 +128,10 @@ void timer(int x){
 	map.y += speedY;
 	if(runs == 10){
 		runs = 0;
-		simulate3D();
+		if (pState == 6)
+			simulate3D();
+		else
+			simulate2D();
 	}
 
 //	rx = myWorld.torus[0]->getMC().matrix[0][0];
@@ -144,7 +147,7 @@ void timer(int x){
 //	rz = myWorld.torus[0]->getMC().matrix[2][2];
 //	myWorld.torus[0]->rotate_mc(rx,ry,rz,0.);
 
-	//myCamera.rotate(1.0,0.0,0.0,0.3);
+	myCamera.rotate(1.0,0.0,0.0,0.3);
 	//myCamera.rotate(0.0,1.0,0.0,0.3);
 
 
