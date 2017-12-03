@@ -118,7 +118,7 @@ void renderer(){
 
 		myCamera.setProjectionMatrix();
 		initLighting();
-		myWorld.draw_world();
+		myWorld.draw_world(pState);
 
 		init2D();
 		toolbar();
