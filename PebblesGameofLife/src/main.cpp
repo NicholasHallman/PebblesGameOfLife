@@ -51,6 +51,14 @@ void initCells(){
 	map.cells = (cell **)calloc(map.size,sizeof(cell *));
 	for(int i = 0;i < map.size; ++i)
 	  	map.cells[i] = (cell *)calloc(map.size,sizeof(cell));
+
+	map3D.size = 20;
+	map3D.cells = (cell ***)calloc(map3D.size, sizeof(cell **));
+	for(int i = 0;i < map3D.size; ++i) {
+		map3D.cells[i] = (cell **)calloc(map3D.size,sizeof(cell *));
+		for(int j = 0;j < map3D.size; ++j)
+			map3D.cells[i][j] = (cell *)calloc(map3D.size,sizeof(cell));
+	}
 }
 
 void initLighting(void) {

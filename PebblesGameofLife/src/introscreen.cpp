@@ -38,6 +38,14 @@ void quitProgram() {
 	for(int i = 0;i < map.size; ++i)
 	    free(map.cells[i]);
 	free(map.cells);
+
+	for(int i = 0;i < map3D.size; ++i) {
+		for(int j = 0;j < map3D.size; ++j)
+			free(map3D.cells[i][j]);
+		free(map3D.cells[i]);
+	}
+	free(map3D.cells);
+
 	exit(0);
 }
 /*
