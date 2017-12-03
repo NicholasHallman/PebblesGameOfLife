@@ -235,10 +235,10 @@ void bcolor(){
 }
 
 void b3D(){
-	map.size = 36;
-	update_grid();
-	genCells();
-	pState = 5;
+	//map.size = 36;
+	//update_grid();
+	gen3DCells();
+	pState = 6;
 	canSim = true;
 }
 

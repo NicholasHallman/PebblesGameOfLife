@@ -43,6 +43,19 @@ void genCells(){
 	map.cells[3][4].newState = 1;
 }
 
+void gen3DCells() {
+	map3D.cells[0][1][0].newState = 1;
+	map3D.cells[0][2][0].newState = 1;
+	map3D.cells[1][0][0].newState = 1;
+	map3D.cells[2][0][0].newState = 1;
+	map3D.cells[3][1][0].newState = 1;
+	map3D.cells[3][2][0].newState = 1;
+	map3D.cells[1][1][1].newState = 1;
+	map3D.cells[2][1][1].newState = 1;
+	map3D.cells[1][2][1].newState = 1;
+	map3D.cells[2][2][1].newState = 1;
+}
+
 void simulate2D(){
 	if(canSim){
 		int neighbours;
@@ -76,35 +89,37 @@ void simulate3D(){
 		int neighbors;
 		int newstate;
 		// DISCLAIMER: DO NOT TRY THIS AT HOME KIDS!!!!
-		for(int z = 0; z < map.size; z++){
-			for(int y = 0; y < map.size; y++){
-				for(int x = 0; x < map.size; x++){
-					neighbors = map3D.cells[(x - 1 + map3D.size) % map3D.size][y][z].oldState +
-							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y - 1 + map3D.size) % map3D.size][z].oldState +
-							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y + 1) % map3D.size][z].oldState +
-							map3D.cells[(x + 1) % map3D.size][y][z].oldState +
-							map3D.cells[(x + 1) % map3D.size][(y - 1 + map3D.size) % map3D.size][z].oldState +
-							map3D.cells[(x + 1) % map3D.size][(y + 1) % map3D.size][z].oldState +
-							map3D.cells[x][(y - 1 + map3D.size) % map3D.size][z].oldState +
-							map3D.cells[x][(y + 1) % map3D.size][z].oldState +
-							map3D.cells[x][y][(z + 1) % map3D.size].oldState +
-							map3D.cells[x][y][(z - 1 + map3D.size) % map3D.size].oldState +
-							map3D.cells[(x - 1 + map3D.size) % map3D.size][y][(z + 1) % map3D.size].oldState +
-							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z + 1) % map3D.size].oldState +
-							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y + 1) % map3D.size][(z + 1) % map3D.size].oldState +
-							map3D.cells[(x + 1) % map3D.size][y][(z + 1) % map3D.size].oldState +
-							map3D.cells[(x + 1) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z + 1) % map3D.size].oldState +
-							map3D.cells[(x + 1) % map3D.size][(y + 1) % map3D.size][(z + 1) % map3D.size].oldState +
-							map3D.cells[x][(y - 1 + map3D.size) % map3D.size][(z + 1) % map3D.size].oldState +
-							map3D.cells[x][(y + 1) % map3D.size][(z + 1) % map3D.size].oldState +
-							map3D.cells[(x - 1 + map3D.size) % map3D.size][y][(z - 1 + map3D.size) % map3D.size].oldState +
-							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
-							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y + 1) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
-							map3D.cells[(x + 1) % map3D.size][y][(z - 1 + map3D.size) % map3D.size].oldState +
-							map3D.cells[(x + 1) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
-							map3D.cells[(x + 1) % map3D.size][(y + 1) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
-							map3D.cells[x][(y - 1 + map3D.size) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
-							map3D.cells[x][(y + 1) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState;
+		for(int z = 0; z < map3D.size; z++){
+			for(int y = 0; y < map3D.size; y++){
+				for(int x = 0; x < map3D.size; x++){
+					neighbors = checkNeighbor(x,y,z);
+
+//							map3D.cells[(x - 1 + map3D.size) % map3D.size][y][z].oldState +
+//							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y - 1 + map3D.size) % map3D.size][z].oldState +
+//							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y + 1) % map3D.size][z].oldState +
+//							map3D.cells[(x + 1) % map3D.size][y][z].oldState +
+//							map3D.cells[(x + 1) % map3D.size][(y - 1 + map3D.size) % map3D.size][z].oldState +
+//							map3D.cells[(x + 1) % map3D.size][(y + 1) % map3D.size][z].oldState +
+//							map3D.cells[x][(y - 1 + map3D.size) % map3D.size][z].oldState +
+//							map3D.cells[x][(y + 1) % map3D.size][z].oldState +
+//							map3D.cells[x][y][(z + 1) % map3D.size].oldState +
+//							map3D.cells[x][y][(z - 1 + map3D.size) % map3D.size].oldState +
+//							map3D.cells[(x - 1 + map3D.size) % map3D.size][y][(z + 1) % map3D.size].oldState +
+//							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z + 1) % map3D.size].oldState +
+//							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y + 1) % map3D.size][(z + 1) % map3D.size].oldState +
+//							map3D.cells[(x + 1) % map3D.size][y][(z + 1) % map3D.size].oldState +
+//							map3D.cells[(x + 1) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z + 1) % map3D.size].oldState +
+//							map3D.cells[(x + 1) % map3D.size][(y + 1) % map3D.size][(z + 1) % map3D.size].oldState +
+//							map3D.cells[x][(y - 1 + map3D.size) % map3D.size][(z + 1) % map3D.size].oldState +
+//							map3D.cells[x][(y + 1) % map3D.size][(z + 1) % map3D.size].oldState +
+//							map3D.cells[(x - 1 + map3D.size) % map3D.size][y][(z - 1 + map3D.size) % map3D.size].oldState +
+//							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
+//							map3D.cells[(x - 1 + map3D.size) % map3D.size][(y + 1) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
+//							map3D.cells[(x + 1) % map3D.size][y][(z - 1 + map3D.size) % map3D.size].oldState +
+//							map3D.cells[(x + 1) % map3D.size][(y - 1 + map3D.size) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
+//							map3D.cells[(x + 1) % map3D.size][(y + 1) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
+//							map3D.cells[x][(y - 1 + map3D.size) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState +
+//							map3D.cells[x][(y + 1) % map3D.size][(z - 1 + map3D.size) % map3D.size].oldState;
 					newstate = 0;
 					//Update the cell's newstate based on the neighbours
 					if(map3D.cells[x][y][z].oldState == 1 && (neighbors == 4 || neighbors == 5))
@@ -118,4 +133,13 @@ void simulate3D(){
 	}
 }
 
+int checkNeighbor(int x, int y, int z) {
+	int count = 0;
+	for(int i = x - 1; i <= x + 1; i++)
+		for(int j = y - 1; j <= y + 1; j++)
+			for(int k = z - 1; k <= z + 1; k++)
+				if (i != x || j != y || k != z)
+					count = count + map3D.cells[(i + map3D.size) % map3D.size][(j + map3D.size) % map3D.size][(k + map3D.size) % map3D.size].oldState;
+	return count;
+}
 

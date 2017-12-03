@@ -8,14 +8,14 @@
 #include "Cube.hpp"
 
 Cube::Cube() {
-	vertex[0][0] = -1;vertex[0][1] = -1;vertex[0][2] = -1;
-	vertex[1][0] = -1;vertex[1][1] = 1; vertex[1][2] = -1;
-	vertex[2][0] = 1;vertex[2][1] = -1; vertex[2][2] = -1;
-	vertex[3][0] = 1;vertex[3][1] = 1;vertex[3][2] = -1;
-	vertex[4][0] = -1;vertex[4][1] = -1;vertex[4][2] = 1;
-	vertex[5][0] = -1;vertex[5][1] = 1; vertex[5][2] = 1;
-    vertex[6][0] = 1;vertex[6][1] = -1;vertex[6][2] = 1;
-    vertex[7][0] = 1;vertex[7][1] = 1;vertex[7][2] = 1;
+	vertex[0][0] = -0.5;vertex[0][1] = -0.5;vertex[0][2] = -0.5;
+	vertex[1][0] = -0.5;vertex[1][1] = 0.5; vertex[1][2] = -0.5;
+	vertex[2][0] = 0.5;vertex[2][1] = -0.5; vertex[2][2] = -0.5;
+	vertex[3][0] = 0.5;vertex[3][1] = 0.5;vertex[3][2] = -0.5;
+	vertex[4][0] = -0.5;vertex[4][1] = -0.5;vertex[4][2] = 0.5;
+	vertex[5][0] = -0.5;vertex[5][1] = 0.5; vertex[5][2] = 0.5;
+	vertex[6][0] = 0.5;vertex[6][1] = -0.5;vertex[6][2] = 0.5;
+	vertex[7][0] = 0.5;vertex[7][1] = 0.5;vertex[7][2] = 0.5;
 
     face[0][0] = 0;face[0][1] = 1;face[0][2] = 3;face[0][3] = 2;
     face[1][0] = 3;face[1][1] = 7;face[1][2] = 6;face[1][3] = 2;
@@ -26,7 +26,15 @@ Cube::Cube() {
 }
 
 void Cube::draw_face(int i) {
+	glColor3f(.0,.1,.2);
 	glBegin(GL_LINE_LOOP);
+		glVertex3fv(&vertex[face[i][0]][0]);
+		glVertex3fv(&vertex[face[i][1]][0]);
+		glVertex3fv(&vertex[face[i][2]][0]);
+		glVertex3fv(&vertex[face[i][3]][0]);
+	glEnd();
+	glColor3f(.0,.6,.8);
+	glBegin(GL_QUADS);
 		glVertex3fv(&vertex[face[i][0]][0]);
 		glVertex3fv(&vertex[face[i][1]][0]);
 		glVertex3fv(&vertex[face[i][2]][0]);
