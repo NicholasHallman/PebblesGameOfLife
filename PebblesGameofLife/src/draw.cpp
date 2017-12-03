@@ -8,6 +8,7 @@
 #include"main.hpp"
 
 void drawGrid(){
+	glLineWidth(1);
 	int width = CSIZE * map.size;
 	int height = CSIZE * map.size;
 	int startx = (1366 - width) / 2;

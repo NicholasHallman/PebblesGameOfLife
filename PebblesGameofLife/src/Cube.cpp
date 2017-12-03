@@ -26,14 +26,14 @@ Cube::Cube() {
 }
 
 void Cube::draw_face(int i) {
-	glColor3f(.0,.9,.2);
+	glColor3f(.0,.1,.2);
 	glBegin(GL_LINE_LOOP);
 		glVertex3fv(&vertex[face[i][0]][0]);
 		glVertex3fv(&vertex[face[i][1]][0]);
 		glVertex3fv(&vertex[face[i][2]][0]);
 		glVertex3fv(&vertex[face[i][3]][0]);
 	glEnd();
-	glColor3f(.0,.5,.2);
+	glColor3f(.0,.6,.8);
 	glBegin(GL_QUADS);
 		glVertex3fv(&vertex[face[i][0]][0]);
 		glVertex3fv(&vertex[face[i][1]][0]);

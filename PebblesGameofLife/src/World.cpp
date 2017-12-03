@@ -44,8 +44,7 @@ void World::draw_world(int item) {
 		for (int i = 0; i < 20; i++) {
 			for (int j = 0; j < 20; j++) {
 				for (int k = 0; k < 20; k++) {
-					if(map3D.cells[i][j][k].newState == 1)
-						list[i][j][k]->draw();
+					if(map3D.cells[i][j][k].newState == 1) list[i][j][k]->draw();
 					map3D.cells[i][j][k].oldState = map3D.cells[i][j][k].newState;
 				}
 			}

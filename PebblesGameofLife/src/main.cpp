@@ -26,6 +26,7 @@ World myWorld;
 Camera myCamera;
 
 void init2D(void) {
+
 	glMatrixMode(GL_PROJECTION);
 	//glPushMatrix();
 	glLoadIdentity();
