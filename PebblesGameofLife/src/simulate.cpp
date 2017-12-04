@@ -44,6 +44,7 @@ void genCells(){
 }
 
 void gen3DCells() {
+	/*
 	map3D.cells[0][1][0].newState = 1;
 	map3D.cells[0][2][0].newState = 1;
 	map3D.cells[1][0][0].newState = 1;
@@ -54,6 +55,87 @@ void gen3DCells() {
 	map3D.cells[2][1][1].newState = 1;
 	map3D.cells[1][2][1].newState = 1;
 	map3D.cells[2][2][1].newState = 1;
+	map3D.cells[0][1][0].newState = 1;
+	map3D.cells[0][2][0].newState = 1;
+	map3D.cells[1][0][0].newState = 1;
+	map3D.cells[2][0][0].newState = 1;
+	map3D.cells[3][1][0].newState = 1;
+	map3D.cells[3][2][0].newState = 1;
+	map3D.cells[1][1][1].newState = 1;
+	map3D.cells[2][1][1].newState = 1;
+	map3D.cells[1][2][1].newState = 1;
+	map3D.cells[2][2][1].newState = 1;
+
+	map3D.cells[0+5][1+5][0+5].newState = 1;
+	map3D.cells[0+5][2+5][0+5].newState = 1;
+	map3D.cells[1+5][0+5][0+5].newState = 1;
+	map3D.cells[2+5][0+5][0+5].newState = 1;
+	map3D.cells[3+5][1+5][0+5].newState = 1;
+	map3D.cells[3+5][2+5][0+5].newState = 1;
+	map3D.cells[1+5][1+5][1+5].newState = 1;
+	map3D.cells[2+5][1+5][1+5].newState = 1;
+	map3D.cells[1+5][2+5][1+5].newState = 1;
+	map3D.cells[2+5][2+5][1+5].newState = 1;
+	map3D.cells[0+5][1+5][0+5].newState = 1;
+	map3D.cells[0+5][2+5][0+5].newState = 1;
+	map3D.cells[1+5][0+5][0+5].newState = 1;
+	map3D.cells[2+5][0+5][0+5].newState = 1;
+	map3D.cells[3+5][1+5][0+5].newState = 1;
+	map3D.cells[3+5][2+5][0+5].newState = 1;
+	map3D.cells[1+5][1+5][1+5].newState = 1;
+	map3D.cells[2+5][1+5][1+5].newState = 1;
+	map3D.cells[1+5][2+5][1+5].newState = 1;
+	map3D.cells[2+5][2+5][1+5].newState = 1;
+
+	map3D.cells[0+5][1+5][0].newState = 1;
+	map3D.cells[0+5][2+5][0].newState = 1;
+	map3D.cells[1+5][0+5][0].newState = 1;
+	map3D.cells[2+5][0+5][0].newState = 1;
+	map3D.cells[3+5][1+5][0].newState = 1;
+	map3D.cells[3+5][2+5][0].newState = 1;
+	map3D.cells[1+5][1+5][1].newState = 1;
+	map3D.cells[2+5][1+5][1].newState = 1;
+	map3D.cells[1+5][2+5][1].newState = 1;
+	map3D.cells[2+5][2+5][1].newState = 1;
+	map3D.cells[0+5][1+5][0].newState = 1;
+	map3D.cells[0+5][2+5][0].newState = 1;
+	map3D.cells[1+5][0+5][0].newState = 1;
+	map3D.cells[2+5][0+5][0].newState = 1;
+	map3D.cells[3+5][1+5][0].newState = 1;
+	map3D.cells[3+5][2+5][0].newState = 1;
+	map3D.cells[1+5][1+5][1].newState = 1;
+	map3D.cells[2+5][1+5][1].newState = 1;
+	map3D.cells[1+5][2+5][1].newState = 1;
+	map3D.cells[2+5][2+5][1].newState = 1;
+	*/
+	/*
+	map3D.cells[0+5][1][0+5].newState = 1;
+	map3D.cells[0+5][2][0+5].newState = 1;
+	map3D.cells[1+5][0][0+5].newState = 1;
+	map3D.cells[2+5][0][0+5].newState = 1;
+	map3D.cells[3+5][1][0+5].newState = 1;
+	map3D.cells[3+5][2][0+5].newState = 1;
+	map3D.cells[1+5][1][1+5].newState = 1;
+	map3D.cells[2+5][1][1+5].newState = 1;
+	map3D.cells[1+5][2][1+5].newState = 1;
+	map3D.cells[2+5][2][1+5].newState = 1;
+	map3D.cells[0+5][1][0+5].newState = 1;
+	map3D.cells[0+5][2][0+5].newState = 1;
+	map3D.cells[1+5][0][0+5].newState = 1;
+	map3D.cells[2+5][0][0+5].newState = 1;
+	map3D.cells[3+5][1][0+5].newState = 1;
+	map3D.cells[3+5][2][0+5].newState = 1;
+	map3D.cells[1+5][1][1+5].newState = 1;
+	map3D.cells[2+5][1][1+5].newState = 1;
+	map3D.cells[1+5][2][1+5].newState = 1;
+	map3D.cells[2+5][2][1+5].newState = 1;
+	*/
+
+	for (int i = 5; i < map3D.size-5; i++)
+		for (int j = 5; j < map3D.size-5; j++)
+			for (int k = 5; k < map3D.size-5; k++)
+				map3D.cells[i][j][k].newState = rand() % 2;
+
 }
 
 void simulate2D(){
