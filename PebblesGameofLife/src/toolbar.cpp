@@ -130,6 +130,15 @@ void toolbar(){
 		buttons[12] = three_dimension;
 		buttons[12].id = 12;
 		introVisit = false;
+
+		Button heat;
+		heat.Name(( const unsigned char*)"Heat");
+		heat.SetPosition(Vertex(three_dimension.position.x + three_dimension.rWidth + 10,bh,0));
+		heat.onClick(heatM);
+		heat.active = true;
+		buttons[13] = heat;
+		buttons[13].id = 13;
+		introVisit = false;
 	}
 	for(int i = 0; i < 20; i++){
 		if(buttons[i].active){
@@ -169,7 +178,6 @@ void toolbar3D(){
 		torusV.active = true;
 		buttons[0] = torusV; // add the button to the button draw array
 		buttons[0].id = 0;
-		buttons[0].broken = true;
 
 		Button torusD; // create a new button
 		torusD.Name(( const unsigned char*)"Torus Draw"); //name the button (acts as button text)
@@ -178,6 +186,14 @@ void toolbar3D(){
 		torusD.active = true;
 		buttons[1] = torusD; // add the button to the button draw array
 		buttons[1].id = 1;
+
+		Button cube; // create a new button
+		cube.Name(( const unsigned char*)"Cube View"); //name the button (acts as button text)
+		cube.SetPosition(Vertex(torusD.position.x + torusD.rWidth + 10,bh,0)); //set the buttons position
+		cube.onClick(b3D); // set the function to activate when the button is pressed
+		cube.active = true;
+		buttons[2] = cube; // add the button to the button draw array
+		buttons[2].id = 2;
 
 		Button quit;
 		quit.Name(( const unsigned char*)"Exit Program");
@@ -198,7 +214,7 @@ void toolbar3D(){
 
 		Button sre;
 		sre.Name(( const unsigned char*)"Clear");
-		sre.SetPosition(Vertex(torusD.position.x + torusD.rWidth + 10,bh,0));
+		sre.SetPosition(Vertex(cube.position.x + cube.rWidth + 10,bh,0));
 		sre.onClick(breset);
 		sre.active = true;
 		buttons[9] = sre;
@@ -336,6 +352,10 @@ void btorView(){
 	myCamera.eye.z = 14;
 	canSim = true;
 	pState = 5;
+}
+
+void heatM(){
+	heatMap = !heatMap;
 }
 
 void breset(){

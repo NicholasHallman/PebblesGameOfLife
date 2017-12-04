@@ -28,8 +28,11 @@ public:
 	Vertex faces[36 * 36][4];
 	Torus();
 	void draw();
+	void drawOutline(int);
 	void reset();
 private:
+	int fact(int);
+	double comb(int, int);
 	void genVertices();
 	void genLines();
 	void drawSolid();

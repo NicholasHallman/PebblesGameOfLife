@@ -27,6 +27,7 @@ void b3D();
 void b2D();
 void btorDraw();
 void btorView();
+void heatM();
 
 
 #endif /* TOOLBAR_H_ */

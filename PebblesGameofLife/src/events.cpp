@@ -71,7 +71,7 @@ void mouseClicked(int button, int state, int x, int y){
 }
 
 void keyPress(unsigned char key, int x, int y){
-	if(pState == 2 || pState == 3){
+	if(pState == 2 || pState == 3 || pState == 6){
 		switch(key){
 		case 'w':
 			speedY = -4;
@@ -91,7 +91,7 @@ void keyPress(unsigned char key, int x, int y){
 }
 
 void keyRelease(unsigned char key, int x, int y){
-	if(pState == 2 || pState == 3){
+	if(pState == 2 || pState == 3 || pState == 6){
 		switch(key){
 		case 's':
 		case 'w':
@@ -124,8 +124,19 @@ void timer(int x){
 	GLfloat ry;
 	GLfloat rz;
 	runs ++;
-	map.x += speedX;
-	map.y += speedY;
+	if(pState == 2 || pState == 3){
+		map.x += speedX;
+		map.y += speedY;
+
+	} else if(pState == 6){
+		if(speedX > 0) speedX = 1;
+		if(speedX < 0) speedX = -1;
+
+		if(speedY > 0) speedY = 1;
+		if(speedY < 0) speedY = -1;
+
+		myCamera.rotate(speedY, speedX, 0.0, 0.5);
+	}
 	if(runs == 10){
 		runs = 0;
 		if(pState == 6){

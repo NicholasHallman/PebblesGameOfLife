@@ -31,6 +31,7 @@ public:
 	void rotate(GLfloat rx, GLfloat ry, GLfloat rz, GLfloat angle);
 	void rotate_origin(GLfloat rx, GLfloat ry, GLfloat rz, GLfloat angle);
 	virtual void draw() = 0;
+	virtual void drawOutline(int) = 0;
 	void reset();
 };
 

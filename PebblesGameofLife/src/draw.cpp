@@ -7,6 +7,20 @@
 
 #include"main.hpp"
 
+int fact(int a){
+	if(a == 0 || a == 1){
+		return 1;
+	} else{
+		return(fact(a - 1) * a);
+	}
+}
+
+double comb(int n,int k){
+	if(n==k) return 1;
+	if (k==0 && n!=0) return 1;
+	return( fact(n) / (fact(k) * fact(n-k)) );
+}
+
 void drawGrid(){
 	glLineWidth(1);
 	int width = CSIZE * map.size;
@@ -45,7 +59,15 @@ void drawCells(){
 	for(int y = 0; y < map.size; y++){
 		for(int x = 0; x < map.size; x++){
 			if(map.cells[x][y].newState == 1){
-				glColor3f(colors[0],colors[1],colors[2]);
+				if(heatMap){
+					double age = (float) map.cells[x][y].age / 10.0;
+					if(age > 1) age = 1;
+					int n = 2;
+					float r = comb(n, 2) * pow((1.0 - age), n - 2) * pow(age, 2) * 1;
+					float g = comb(n, 1) * pow((1.0 - age), n - 1) * pow(age, 1) * 1;
+					float b = comb(n, 0) * pow((1.0 - age), n - 0) * pow(age, 0) * 1;
+					glColor3f(r,g,b);
+				} else glColor3f(colors[0],colors[1],colors[2]);
 				glBegin(GL_QUADS);
 					glVertex2d(map.x + startx + (x * CSIZE)      , map.y + starty + ((y + 1) * CSIZE));
 					glVertex2d(map.x + startx + ((x + 1) * CSIZE), map.y + starty + ((y + 1) * CSIZE));

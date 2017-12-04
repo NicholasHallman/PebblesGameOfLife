@@ -10,6 +10,7 @@
 
 #include <GL/glut.h>
 #include "Shape.hpp"
+#include "Vertex.hpp"
 
 class Cube: public Shape {
 protected:
@@ -19,7 +20,11 @@ public:
 	Cube();
 	void draw_face(int);
 	void draw();
+	void drawOutline(int);
 	void draw_simple();
+private:
+	Vertex normals[6];
+	void calcNormals();
 };
 
 

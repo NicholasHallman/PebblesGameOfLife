@@ -46,6 +46,7 @@ void Button::Draw(){
 				glColor3f(0.3, 0.8, 0.3);
 		else if (this->id == 11)
 			glColor3f(0.6, 0.2, 0.2);
+		else if(this->id == 13 && heatMap) glColor3f(0.3, 0.8, 0.3);
 		else
 			glColor3f(.5,.55,.6);
 	}

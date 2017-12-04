@@ -17,7 +17,7 @@ World::World() {
 			for (int k = 0; k < 20; k++) {
 				list[i][j][k] = new Cube();
 				glPushMatrix();
-				list[i][j][k]->translate((GLfloat)i-10,(GLfloat)j-10,(GLfloat)k-10);
+				list[i][j][k]->translate((GLfloat)i-10 + (0.25 * i),(GLfloat)j-10 + (0.25 * j),(GLfloat)k-10 + (0.25 * k));
 				glPopMatrix();
 			}
 		}
@@ -45,6 +45,11 @@ void World::draw_world(int item) {
 			for (int j = 0; j < 20; j++) {
 				for (int k = 0; k < 20; k++) {
 					if(map3D.cells[i][j][k].newState == 1) list[i][j][k]->draw();
+					else if(i == 0 || j == 0 || k == 0) {
+						if(i == 0) list[i][j][k]->drawOutline(3);
+						if(j == 0) list[i][j][k]->drawOutline(5); // good
+						if(k == 0) list[i][j][k]->drawOutline(0); // good
+					}
 					map3D.cells[i][j][k].oldState = map3D.cells[i][j][k].newState;
 				}
 			}

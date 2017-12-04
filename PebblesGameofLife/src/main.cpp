@@ -22,6 +22,7 @@ bool introVisit = true;
 cellMap map;
 cellMap3D map3D;
 World myWorld;
+bool heatMap = true;
 
 Camera myCamera;
 
@@ -71,7 +72,7 @@ void initLighting(void) {
 	GLfloat ambientLight[] = { 0.5f, 0.6f, 0.7f, 1.0f };
 	GLfloat diffuseLight[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	GLfloat position[] = { -1.0f, -1.0f, 0.0f, 0.0f };
-
+	glDisable(GL_LIGHT1);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_COLOR_MATERIAL);
@@ -83,16 +84,39 @@ void initLighting(void) {
 	glLightfv(GL_LIGHT0, GL_POSITION, position);
 }
 
+void initLighting2(void) {
+
+	glShadeModel(GL_SMOOTH);
+
+
+	// Create light components
+	GLfloat ambientLight[] = { 0.5f, 0.6f, 0.7f, 1.0f };
+	GLfloat diffuseLight[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	GLfloat position[] = { -.5f, 2.0f, -.5f, 0.0f };
+	glDisable(GL_LIGHT0);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT1);
+	glEnable(GL_COLOR_MATERIAL);
+	glColorMaterial (GL_FRONT, GL_AMBIENT_AND_DIFFUSE );
+    // Assign created components to GL_LIGHT0
+	glLightfv(GL_LIGHT1, GL_AMBIENT, ambientLight);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuseLight);
+	//glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
+	glLightfv(GL_LIGHT1, GL_POSITION, position);
+}
+
 void renderer(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	switch(pState){
 	case 1:
+		glDisable(GL_BLEND);
 		// Opens program on the intro screen
 		intro();
 		drawGrid();
 		break;
 	case 2:
+		glDisable(GL_BLEND);
 		//user draws on cell map to add cells;
 		drawCells();
 		drawGrid();
@@ -102,6 +126,7 @@ void renderer(){
 		}
 		break;
 	case 3:
+		glDisable(GL_BLEND);
 		drawCells();
 		drawGrid();
 		toolbar();
@@ -114,6 +139,7 @@ void renderer(){
 		//User inputs seed for generation, selects shape;
 		break;
 	case 5:
+		glDisable(GL_BLEND);
 		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glEnable(GL_DEPTH_TEST);
 
@@ -121,6 +147,7 @@ void renderer(){
 		initLighting();
 		myWorld.draw_world(pState);
 
+		glDisable(GL_LIGHTING);
 		init2D();
 		toolbar3D();
 		glMatrixMode(GL_PROJECTION);
@@ -130,13 +157,16 @@ void renderer(){
 
 		break;
 	case 6:
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glEnable(GL_DEPTH_TEST);
 
 		myCamera.setProjectionMatrix();
-		initLighting();
+		initLighting2();
 		myWorld.draw_world(pState);
 
+		glDisable(GL_LIGHTING);
 		init2D();
 		toolbar3D();
 		glMatrixMode(GL_PROJECTION);

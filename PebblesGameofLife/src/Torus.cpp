@@ -7,6 +7,20 @@
 
 #include "Torus.hpp"
 
+int Torus::fact(int a){
+	if(a == 0 || a == 1){
+		return 1;
+	} else{
+		return(fact(a - 1) * a);
+	}
+}
+
+double Torus::comb(int n,int k){
+	if(n==k) return 1;
+	if (k==0 && n!=0) return 1;
+	return( fact(n) / (fact(k) * fact(n-k)) );
+}
+
 Torus::Torus() {
 	C = 3;
 	A = 1;
@@ -27,7 +41,15 @@ void Torus::draw() {
 	int y = 0;
 	for(int i = 0; i < grid_size * grid_size; i++){
 		if(map.cells[x][y].newState == 1){
-			glColor3f(.0,.6,.8);
+			if(heatMap){
+				double age = (float) map.cells[x][y].age / 10.0;
+				if(age > 1) age = 1;
+					int n = 2;
+					float r = comb(n, 2) * pow((1.0 - age), n - 2) * pow(age, 2) * 1;
+					float g = comb(n, 1) * pow((1.0 - age), n - 1) * pow(age, 1) * 1;
+					float b = comb(n, 0) * pow((1.0 - age), n - 0) * pow(age, 0) * 1;
+					glColor3f(r,g,b);
+				} else glColor3f(.0,.6,.8);
 		} else{
 			glColor3f(.0,.1,.2);
 			GLfloat shine[] = {0.5,0.5,0.5,1};
@@ -63,6 +85,10 @@ void Torus::draw() {
 	}
 
 	glPopMatrix();
+}
+
+void Torus::drawOutline(int i){
+
 }
 
 void Torus::genVertices() {
@@ -119,7 +145,7 @@ void Torus::genVertices() {
 }
 
 void Torus::genLines() {
-	A = 1.001;
+	A = 1.005;
 	int pos = 0;
 	for (int v = 0; v < grid_size; v++) {
 		for (int u = 0; u < grid_size; u++) {

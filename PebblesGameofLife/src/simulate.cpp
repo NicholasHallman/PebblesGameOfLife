@@ -71,6 +71,12 @@ void simulate2D(){
 					else if(map.cells[x][y].oldState == 0 && neighbours == 3)
 							newstate = 1;
 					map.cells[x][y].newState = newstate;
+
+					if(map.cells[x][y].oldState == 1 && map.cells[x][y].newState == 1){
+						map.cells[x][y].age ++;
+					} else{
+						map.cells[x][y].age = 0;
+					}
 			}
 		}
 	}

@@ -22,5 +22,6 @@ extern float colors[];
 extern struct cellMap map;
 extern struct cellMap3D map3D;
 extern Camera myCamera;
+extern bool heatMap;
 
 #endif /* GLOBAL_HPP_ */
