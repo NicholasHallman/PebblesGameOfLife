@@ -189,6 +189,8 @@ void initButton(){
 
 int main(int argv, char* argc[]) {
 
+	srand(time(NULL));
+
 	glutInit(&argv, argc);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 

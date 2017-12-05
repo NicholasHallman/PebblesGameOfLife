@@ -29,6 +29,8 @@ Cube::Cube() {
 
 void Cube::draw_face(int i) {
 	glColor3f(.0,.1,.2);
+	glEnable( GL_LINE_SMOOTH );
+	glLineWidth(2);
 	glBegin(GL_LINE_LOOP);
 		glVertex3fv(&vertex[face[i][0]][0]);
 		glVertex3fv(&vertex[face[i][1]][0]);
@@ -49,6 +51,8 @@ void Cube::drawOutline(int i) {
 	glPushMatrix();
 	this->ctm_multiply();
 	glScalef(s, s, s);
+	glEnable( GL_LINE_SMOOTH );
+	glLineWidth(1);
 	glColor3f(.1, .7, .0);
 	glBegin(GL_LINE_LOOP);
 		glNormal3d(normals[i].x, normals[i].y, normals[i].z);
