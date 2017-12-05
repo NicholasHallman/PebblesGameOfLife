@@ -2,7 +2,8 @@
  * Cube.hpp
  *
  *  Created on: Dec 2, 2017
- *      Author: ghiy2250
+ *      Author: Omid Ghiyasian
+ *      		Nicholas Hallman
  */
 
 #ifndef CUBE_HPP_

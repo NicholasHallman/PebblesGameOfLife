@@ -1,8 +1,11 @@
 /*
- * Vector.hpp
+ * toolbar.h
  *
- *  Created on: Nov 26, 2017
- *      Author: malus
+ *  Created on: Nov 24, 2017
+ *      Author: Omid Ghiyasian
+ *      		Nicholas Hallman
+ *
+ *
  */
 
 #ifndef VECTOR_HPP_

@@ -1,9 +1,9 @@
 /*
- * camera.cpp
+ * Shape.cpp
  *
- *  Created on: Nov 26, 2017
- *      Author: malus
- *
+ *  Created on: Nov 30, 2017
+ *      Author: Omid Ghiyasian
+ *      		Nicholas Hallman
  */
 
 #include <stdio.h>

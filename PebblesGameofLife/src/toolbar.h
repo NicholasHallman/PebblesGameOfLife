@@ -2,7 +2,9 @@
  * toolbar.h
  *
  *  Created on: Nov 24, 2017
- *      Author: Advanderar
+ *      Author: Nicholas Hallman
+ *      	    Omid Ghiyasian
+ *
  */
 
 #ifndef TOOLBAR_H_
@@ -30,6 +32,7 @@ void btorView();
 void heatM();
 void lity();
 void lineShow();
+void glider();
 
 
 #endif /* TOOLBAR_H_ */

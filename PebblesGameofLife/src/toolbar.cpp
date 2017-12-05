@@ -1,3 +1,12 @@
+/*
+ * toolbar.h
+ *
+ *  Created on: Nov 24, 2017
+ *      Author: Nicholas Hallman
+ *      	    Omid Ghiyasian
+ *
+ */
+
 #include"toolbar.h"
 
 void clearButtons(){
@@ -246,6 +255,14 @@ void toolbar3D(){
 		buttons[15].id = 14;
 		introVisit = false;
 
+		Button gli;
+		gli.Name(( const unsigned char*)"Glider");
+		gli.SetPosition(Vertex(line.position.x + line.rWidth + 10,bh,0));
+		gli.onClick(glider);
+		gli.active = true;
+		buttons[16] = gli;
+		buttons[16].id = 16;
+		introVisit = false;
 	}
 
 	for(int i = 0; i < 20; i++){
@@ -400,6 +417,10 @@ void breset(){
 			map.cells[x][y].newState = 0;
 		}
 	}
+}
+
+void glider(){
+	glid = !glid;
 }
 
 

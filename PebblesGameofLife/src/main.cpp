@@ -25,7 +25,7 @@ World myWorld;
 bool heatMap = true;
 bool perVertex = true;
 bool liney = true;
-
+bool glid = false;
 Camera myCamera;
 
 void init2D(void) {

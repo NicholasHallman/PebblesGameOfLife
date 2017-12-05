@@ -1,8 +1,11 @@
 /*
- * header.hpp
+ * toolbar.h
  *
  *  Created on: Nov 24, 2017
- *      Author: Advanderar
+ *      Author: Omid Ghiyasian
+ *      		Nicholas Hallman
+ *
+ *
  */
 
 #ifndef SIMULATE_HPP_

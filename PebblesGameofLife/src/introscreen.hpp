@@ -1,8 +1,10 @@
 /*
- * introscreen.hpp
+ * toolbar.h
  *
- *  Created on: Nov 23, 2017
- *      Author: Advanderar
+ *  Created on: Nov 24, 2017
+ *      Author: Nicholas Hallman
+ *      	    Omid Ghiyasian
+ *
  */
 
 #ifndef INTROSCREEN_HPP_

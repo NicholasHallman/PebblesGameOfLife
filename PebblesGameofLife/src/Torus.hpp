@@ -1,8 +1,10 @@
 /*
- * Dougnut.h
+ * toolbar.h
  *
- *  Created on: Nov 30, 2017
- *      Author: ghiy2250
+ *  Created on: Nov 24, 2017
+ *      Author: Nicholas Hallman
+ *      	    Omid Ghiyasian
+ *
  */
 
 #ifndef TORUS_HPP_

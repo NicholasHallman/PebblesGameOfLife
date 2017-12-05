@@ -1,8 +1,11 @@
 /*
- * Vertex.cpp
+ * toolbar.h
  *
- *  Created on: Nov 3, 2017
- *      Author: Advanderar
+ *  Created on: Nov 24, 2017
+ *      Author: Omid Ghiyasian
+ *      		Nicholas Hallman
+ *
+ *
  */
 
 #include "Vertex.hpp"

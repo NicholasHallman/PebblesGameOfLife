@@ -2,7 +2,8 @@
  * Shape.hpp
  *
  *  Created on: Nov 30, 2017
- *      Author: ghiy2250
+ *      Author: Omid Ghiyasian
+ *      		Nicholas Hallman
  */
 
 #ifndef SHAPE_HPP_

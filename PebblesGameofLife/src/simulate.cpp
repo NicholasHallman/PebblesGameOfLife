@@ -1,8 +1,11 @@
 /*
- * simulate.cpp
+ * toolbar.h
  *
  *  Created on: Nov 24, 2017
- *      Author: Advanderar
+ *      Author: Omid Ghiyasian
+ *      		Nicholas Hallman
+ *
+ *
  */
 #include"simulate.hpp"
 
@@ -108,33 +111,33 @@ void gen3DCells() {
 	map3D.cells[1+5][2+5][1].newState = 1;
 	map3D.cells[2+5][2+5][1].newState = 1;
 	*/
-	/*
-	map3D.cells[0+5][1][0+5].newState = 1;
-	map3D.cells[0+5][2][0+5].newState = 1;
-	map3D.cells[1+5][0][0+5].newState = 1;
-	map3D.cells[2+5][0][0+5].newState = 1;
-	map3D.cells[3+5][1][0+5].newState = 1;
-	map3D.cells[3+5][2][0+5].newState = 1;
-	map3D.cells[1+5][1][1+5].newState = 1;
-	map3D.cells[2+5][1][1+5].newState = 1;
-	map3D.cells[1+5][2][1+5].newState = 1;
-	map3D.cells[2+5][2][1+5].newState = 1;
-	map3D.cells[0+5][1][0+5].newState = 1;
-	map3D.cells[0+5][2][0+5].newState = 1;
-	map3D.cells[1+5][0][0+5].newState = 1;
-	map3D.cells[2+5][0][0+5].newState = 1;
-	map3D.cells[3+5][1][0+5].newState = 1;
-	map3D.cells[3+5][2][0+5].newState = 1;
-	map3D.cells[1+5][1][1+5].newState = 1;
-	map3D.cells[2+5][1][1+5].newState = 1;
-	map3D.cells[1+5][2][1+5].newState = 1;
-	map3D.cells[2+5][2][1+5].newState = 1;
-	*/
-
-	for (int i = 5; i < map3D.size-5; i++)
-		for (int j = 5; j < map3D.size-5; j++)
-			for (int k = 5; k < map3D.size-5; k++)
-				map3D.cells[i][j][k].newState = rand() % 2;
+	if(glid){
+		map3D.cells[0+5][1][0+5].newState = 1;
+		map3D.cells[0+5][2][0+5].newState = 1;
+		map3D.cells[1+5][0][0+5].newState = 1;
+		map3D.cells[2+5][0][0+5].newState = 1;
+		map3D.cells[3+5][1][0+5].newState = 1;
+		map3D.cells[3+5][2][0+5].newState = 1;
+		map3D.cells[1+5][1][1+5].newState = 1;
+		map3D.cells[2+5][1][1+5].newState = 1;
+		map3D.cells[1+5][2][1+5].newState = 1;
+		map3D.cells[2+5][2][1+5].newState = 1;
+		map3D.cells[0+5][1][0+5].newState = 1;
+		map3D.cells[0+5][2][0+5].newState = 1;
+		map3D.cells[1+5][0][0+5].newState = 1;
+		map3D.cells[2+5][0][0+5].newState = 1;
+		map3D.cells[3+5][1][0+5].newState = 1;
+		map3D.cells[3+5][2][0+5].newState = 1;
+		map3D.cells[1+5][1][1+5].newState = 1;
+		map3D.cells[2+5][1][1+5].newState = 1;
+		map3D.cells[1+5][2][1+5].newState = 1;
+		map3D.cells[2+5][2][1+5].newState = 1;
+	} else{
+		for (int i = 5; i < map3D.size-5; i++)
+			for (int j = 5; j < map3D.size-5; j++)
+				for (int k = 5; k < map3D.size-5; k++)
+					map3D.cells[i][j][k].newState = rand() % 2;
+	}
 
 }
 

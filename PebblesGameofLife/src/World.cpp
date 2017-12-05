@@ -2,7 +2,8 @@
  * World.cpp
  *
  *  Created on: Nov 30, 2017
- *      Author: ghiy2250
+ *      Author: Omid Ghiyasian
+ *      		Nicholas Hallman
  */
 
 

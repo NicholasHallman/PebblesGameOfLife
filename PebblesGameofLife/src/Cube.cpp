@@ -2,7 +2,8 @@
  * Cube.cpp
  *
  *  Created on: Dec 2, 2017
- *      Author: ghiy2250
+ *      Author: Omid Ghiyasian
+ *      		Nicholas Hallman
  */
 
 #include "Cube.hpp"

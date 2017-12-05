@@ -1,8 +1,10 @@
 /*
- * global.hpp
+ * toolbar.h
  *
- *  Created on: Dec 2, 2017
- *      Author: Nicholas
+ *  Created on: Nov 24, 2017
+ *      Author: Nicholas Hallman
+ *      	    Omid Ghiyasian
+ *
  */
 
 #ifndef GLOBAL_HPP_
@@ -25,5 +27,5 @@ extern Camera myCamera;
 extern bool heatMap;
 extern bool perVertex;
 extern bool liney;
-
+extern bool glid;
 #endif /* GLOBAL_HPP_ */

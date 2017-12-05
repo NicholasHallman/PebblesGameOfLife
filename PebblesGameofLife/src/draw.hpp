@@ -1,8 +1,10 @@
 /*
- * draw.hpp
+ * toolbar.h
  *
  *  Created on: Nov 24, 2017
- *      Author: Advanderar
+ *      Author: Nicholas Hallman
+ *      	    Omid Ghiyasian
+ *
  */
 
 #ifndef DRAW_HPP_
