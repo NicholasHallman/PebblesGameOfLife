@@ -28,6 +28,8 @@ void b2D();
 void btorDraw();
 void btorView();
 void heatM();
+void lity();
+void lineShow();
 
 
 #endif /* TOOLBAR_H_ */

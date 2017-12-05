@@ -23,6 +23,7 @@ void toolbar(){
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, t); //prints the text to the screen
 
 	if(introVisit){
+		clearButtons();
 		int bh = 735;
 		Button s20; // create a new button
 		s20.Name(( const unsigned char*)"20x20"); //name the button (acts as button text)
@@ -84,8 +85,8 @@ void toolbar(){
 		sfull.Name(( const unsigned char*)"Full Screen");
 		sfull.SetPosition(Vertex(sminus.position.x + sminus.rWidth + 30,bh,0));
 		sfull.onClick(bfull);
-		sfull.active = false;
-		sfull.broken = true;
+		sfull.active = true;
+		sfull.broken = false;
 		buttons[7] = sfull;
 		buttons[7].id = 7;
 
@@ -219,6 +220,32 @@ void toolbar3D(){
 		sre.active = true;
 		buttons[9] = sre;
 		buttons[9].id = 9;
+
+		Button heat;
+		heat.Name(( const unsigned char*)"Heat");
+		heat.SetPosition(Vertex(sre.position.x + sre.rWidth + 10,bh,0));
+		heat.onClick(heatM);
+		heat.active = true;
+		buttons[13] = heat;
+		buttons[13].id = 13;
+
+		Button lit;
+		lit.Name(( const unsigned char*)"Light");
+		lit.SetPosition(Vertex(heat.position.x + heat.rWidth + 10,bh,0));
+		lit.onClick(lity);
+		lit.active = true;
+		buttons[14] = lit;
+		buttons[14].id = 14;
+
+		Button line;
+		line.Name(( const unsigned char*)"Line");
+		line.SetPosition(Vertex(lit.position.x + lit.rWidth + 10,bh,0));
+		line.onClick(lineShow);
+		line.active = true;
+		buttons[15] = line;
+		buttons[15].id = 14;
+		introVisit = false;
+
 	}
 
 	for(int i = 0; i < 20; i++){
@@ -356,6 +383,14 @@ void btorView(){
 
 void heatM(){
 	heatMap = !heatMap;
+}
+
+void lity(){
+	perVertex = !perVertex;
+}
+
+void lineShow(){
+	liney = !liney;
 }
 
 void breset(){

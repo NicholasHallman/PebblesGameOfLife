@@ -52,30 +52,44 @@ void Torus::draw() {
 				} else glColor3f(.0,.6,.8);
 		} else{
 			glColor3f(.0,.1,.2);
-			GLfloat shine[] = {0.5,0.5,0.5,1};
+			GLfloat shine[] = {0.9,0.9,0.9,1};
 			GLfloat specularLight[] = { 1.0f, 1.0f, 1.0f, .3f };
 			glMaterialfv(GL_FRONT, GL_SHININESS, shine);
 			glMaterialfv(GL_FRONT, GL_SPECULAR, specularLight);
 
 		}
 		glBegin(GL_QUADS);
-			glNormal3d(normals[i].x, normals[i].y, normals[i].z);
-			glVertex3f(faces[i][3].x,faces[i][3].y,faces[i][3].z);
-			glVertex3f(faces[i][2].x,faces[i][2].y,faces[i][2].z);
-			glVertex3f(faces[i][1].x,faces[i][1].y,faces[i][1].z);
-			glVertex3f(faces[i][0].x,faces[i][0].y,faces[i][0].z);
+		if(perVertex){
+				glNormal3d(vNormals[i][3].x, vNormals[i][3].y, vNormals[i][3].z);
+				glVertex3f(faces[i][3].x,faces[i][3].y,faces[i][3].z);
 
+				glNormal3d(vNormals[i][2].x, vNormals[i][2].y, vNormals[i][2].z);
+				glVertex3f(faces[i][2].x,faces[i][2].y,faces[i][2].z);
+
+				glNormal3d(vNormals[i][1].x, vNormals[i][1].y, vNormals[i][1].z);
+				glVertex3f(faces[i][1].x,faces[i][1].y,faces[i][1].z);
+
+				glNormal3d(vNormals[i][0].x, vNormals[i][0].y, vNormals[i][0].z);
+				glVertex3f(faces[i][0].x,faces[i][0].y,faces[i][0].z);
+		} else{
+				glNormal3d(normals[i].x, normals[i].y, normals[i].z);
+				glVertex3f(faces[i][3].x,faces[i][3].y,faces[i][3].z);
+				glVertex3f(faces[i][2].x,faces[i][2].y,faces[i][2].z);
+				glVertex3f(faces[i][1].x,faces[i][1].y,faces[i][1].z);
+				glVertex3f(faces[i][0].x,faces[i][0].y,faces[i][0].z);
+		}
 		glEnd();
-
-		glColor3f(.5,.1,.5);
-		glLineWidth(3);
-		glBegin(GL_LINE_STRIP);
-			glVertex3f(lineV[i][0].x ,lineV[i][0].y ,lineV[i][0].z );
-			glVertex3f(lineV[i][1].x ,lineV[i][1].y ,lineV[i][1].z );
-			glVertex3f(lineV[i][2].x ,lineV[i][2].y ,lineV[i][2].z );
-			glVertex3f(lineV[i][3].x ,lineV[i][3].y ,lineV[i][3].z );
-		glEnd();
-
+		if(liney){
+			glColor3f(.5,.1,.5);
+			glLineWidth(3);
+			glBegin(GL_LINE_STRIP);
+				glNormal3d(normals[i].x, normals[i].y, normals[i].z);
+				glVertex3f(lineV[i][0].x ,lineV[i][0].y ,lineV[i][0].z );
+				glVertex3f(lineV[i][1].x ,lineV[i][1].y ,lineV[i][1].z );
+				glVertex3f(lineV[i][2].x ,lineV[i][2].y ,lineV[i][2].z );
+				glVertex3f(lineV[i][3].x ,lineV[i][3].y ,lineV[i][3].z );
+				glEnd();
+		}
 		x++;
 		if(x > 35){
 			x = 0;
@@ -208,7 +222,7 @@ void Torus::reset() {
 void Torus::calcNormals(){
 	//find two vectors on the surface and find their cross product this gives a normal vector
 	int i = 0;
-	for(i = 0; i < 36*36; i++){
+	for(i = 0; i <= 36*36; i++){
 			// get two vectors
 		double x1 = faces[i][0].x;
 		double y1 = faces[i][0].y;
@@ -233,6 +247,102 @@ void Torus::calcNormals(){
 		normals[i].x = (vector1.y * vector2.z) - (vector2.y * vector1.z);
 		normals[i].y = (vector1.z * vector2.x) - (vector2.z * vector1.x);
 		normals[i].z = (vector1.x * vector2.y) - (vector2.x * vector1.y);
+
+		double dist = sqrt(pow(normals[i].x, 2) + pow(normals[i].y, 2) + pow(normals[i].z, 2));
+		normals[i].x /= dist;
+		normals[i].y /= dist;
+		normals[i].z /= dist;
+	}
+	vertexNormals();
+}
+
+void Torus::vertexNormals() {
+	int const len = grid_size;
+	int const max = len * len;
+	int x = 0;
+	int y = 0;
+	Vertex norms[36][36];
+	for(int i = 0; i < 36*36; i++){
+		norms[x][y] = normals[i];
+		x++;
+		if(x == 36){
+			x = 0;
+			y++;
+		}
+	}
+	int i = 0;
+	for(int y = 0; y < 36; y++){
+		for(int x = 0; x < 36; x++){
+			double avgNormX, avgNormY, avgNormZ = 0;
+			avgNormX = (norms[x][y].x
+					+ norms[((x - 1) + len) % len][y].x
+					+ norms[((x - 1) + len) % len][((y - 1) + len) % len].x
+					+ norms[x][((y - 1) + len) % len].x) / 4;
+
+			avgNormY = (norms[x][y].y
+					+ norms[((x - 1) + len) % len][y].y
+					+ norms[((x - 1) + len) % len][((y - 1) + len) % len].y
+					+ norms[x][((y - 1) + len) % len].y) / 4;
+
+			avgNormZ = (norms[x][y].z
+					+ norms[((x - 1) + len) % len][y].z
+					+ norms[((x - 1) + len) % len][((y - 1) + len) % len].z
+					+ norms[x][((y - 1) + len) % len].z) / 4;
+			vNormals[i][3].x = avgNormX;
+			vNormals[i][3].y = avgNormY;
+			vNormals[i][3].z = avgNormZ;
+
+			avgNormX = (norms[x][y].x
+					+ norms[((x + 1) + len) % len][y].x
+					+ norms[((x + 1) + len) % len][((y - 1) + len) % len].x
+					+ norms[x][((y - 1) + len) % len].x) / 4;
+			avgNormY = (norms[x][y].y
+					+ norms[((x + 1) + len) % len][y].y
+					+ norms[((x + 1) + len) % len][((y - 1) + len) % len].y
+					+ norms[x][((y - 1) + len) % len].y) / 4;
+			avgNormZ = (norms[x][y].z
+					+ norms[((x + 1) + len) % len][y].z
+					+ norms[((x + 1) + len) % len][((y - 1) + len) % len].z
+					+ norms[x][((y - 1) + len) % len].z) / 4;
+			vNormals[i][2].x = avgNormX;
+			vNormals[i][2].y = avgNormY;
+			vNormals[i][2].z = avgNormZ;
+
+			avgNormX = (norms[x][y].x
+					+ norms[((x - 1) + len) % len][y].x
+					+ norms[((x - 1) + len) % len][((y + 1) + len) % len].x
+					+ norms[x][((y + 1) + len) % len].x) / 4;
+			avgNormY = (norms[x][y].y
+					+ norms[((x - 1) + len) % len][y].y
+					+ norms[((x - 1) + len) % len][((y + 1) + len) % len].y
+					+ norms[x][((y + 1) + len) % len].y) / 4;
+			avgNormZ = (norms[x][y].z
+					+ norms[((x - 1) + len) % len][y].z
+					+ norms[((x - 1) + len) % len][((y + 1) + len) % len].z
+					+ norms[x][((y + 1) + len) % len].z) / 4;
+			vNormals[i][0].x = avgNormX;
+			vNormals[i][0].y = avgNormY;
+			vNormals[i][0].z = avgNormZ;
+
+			avgNormX = (norms[x][y].x
+					+ norms[((x + 1) + len) % len][y].x
+					+ norms[((x + 1) + len) % len][((y + 1) + len) % len].x
+					+ norms[x][((y + 1) + len) % len].x) / 4;
+			avgNormY = (norms[x][y].y
+					+ norms[((x + 1) + len) % len][y].y
+					+ norms[((x + 1) + len) % len][((y + 1) + len) % len].y
+					+ norms[x][((y + 1) + len) % len].y) / 4;
+			avgNormZ = (norms[x][y].z
+					+ norms[((x + 1) + len) % len][y].z
+					+ norms[((x + 1) + len) % len][((y + 1) + len) % len].z
+					+ norms[x][((y + 1) + len) % len].z) / 4;
+			vNormals[i][1].x = avgNormX;
+			vNormals[i][1].y = avgNormY;
+			vNormals[i][1].z = avgNormZ;
+
+
+			i++;
+		}
 	}
 }
 

@@ -23,6 +23,8 @@ cellMap map;
 cellMap3D map3D;
 World myWorld;
 bool heatMap = true;
+bool perVertex = true;
+bool liney = true;
 
 Camera myCamera;
 
@@ -193,10 +195,10 @@ int main(int argv, char* argc[]) {
 	glutInitWindowPosition(100,100);
 	glutInitWindowSize(1366,768);
 	glutCreateWindow("Pebble's game of life");
-	/*
+
 	glutGameModeString("1366x768");
 	glutEnterGameMode();
-	*/
+
 	init2D();
 	initCells();
 

@@ -23,5 +23,7 @@ extern struct cellMap map;
 extern struct cellMap3D map3D;
 extern Camera myCamera;
 extern bool heatMap;
+extern bool perVertex;
+extern bool liney;
 
 #endif /* GLOBAL_HPP_ */
